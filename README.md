@@ -1,2 +1,2 @@
-# lukestrazz.github.io/home
+# lukestrazz.github.io
  Personal Website & Contact Me.
