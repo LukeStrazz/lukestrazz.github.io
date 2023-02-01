@@ -1,3 +1,3 @@
-lukestrazz.github.io/home
+lukestrazz.github.io/components/home
 Personal Website
 
