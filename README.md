@@ -1,3 +1,2 @@
-lukestrazz.github.io/components/home
-Personal Website
-
+# lukestrazz.github.io/home
+ Personal Website & Contact Me.
