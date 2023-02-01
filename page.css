@@ -1,0 +1,95 @@
+body {
+    font-family: 'Acumin Pro', sans-serif;
+    background-color: #F1F1F1;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #333;
+    color: #FFF;
+  }
+  
+  header h1 {
+    margin: 0;
+    font-size: 24px;
+  }
+  
+  header nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header nav a {
+    display: block;
+    padding: 10px 20px;
+    color: #FFF;
+    text-decoration: none;
+  }
+  
+  main {
+    padding: 20px;
+  }
+  
+  main h2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  main p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  
+  footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    background-color: #333;
+    color: #FFF;
+    font-size: 14px;
+  }
+  
+  form {
+    max-width: 500px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  form label {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  form input,
+  form textarea {
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    border: 1px solid #CCC;
+    border-radius: 5px;
+    width: 100%;
+  }
+  
+  form input[type="submit"] {
+    background-color: #333;
+    color: #FFF;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  form input[type="submit"]:hover {
+    background-color: #FFF;
+    color: #333;
+  }
+  
