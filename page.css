@@ -1,52 +1,52 @@
 body {
     font-family: 'Acumin Pro', sans-serif;
     background-color: #F1F1F1;
-  }
-  
-  header {
+}
+
+header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
     background-color: #333;
     color: #FFF;
-  }
-  
-  header h1 {
+}
+
+header h1 {
     margin: 0;
     font-size: 24px;
-  }
-  
-  header nav ul {
+}
+
+header nav ul {
     display: flex;
     list-style: none;
     margin: 0;
     padding: 0;
-  }
-  
-  header nav a {
+}
+
+header nav a {
     display: block;
     padding: 10px 20px;
     color: #FFF;
     text-decoration: none;
-  }
-  
-  main {
+}
+
+main {
     padding: 20px;
-  }
-  
-  main h2 {
+}
+
+main h2 {
     font-size: 18px;
     margin-bottom: 20px;
-  }
-  
-  main p {
+}
+
+main p {
     font-size: 16px;
     line-height: 1.5;
     margin-bottom: 20px;
-  }
-  
-  footer {
+}
+
+footer {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -54,51 +54,51 @@ body {
     background-color: #333;
     color: #FFF;
     font-size: 14px;
-  }
-  
-  form {
+}
+
+form {
     max-width: 500px;
     margin: 20px auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  
-  form label {
+}
+
+form label {
     font-size: 16px;
     margin-bottom: 10px;
-  }
-  
-  form input,
-  form textarea {
+}
+
+form input,
+form textarea {
     padding: 10px;
     font-size: 16px;
     margin-bottom: 20px;
     border: 1px solid #CCC;
     border-radius: 5px;
     width: 100%;
-  }
-  
-  form input[type="submit"] {
+}
+
+form input[type="submit"] {
     background-color: #333;
     color: #FFF;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-  }
-  
-  form input[type="submit"]:hover {
+}
+
+form input[type="submit"]:hover {
     background-color: #FFF;
     color: #333;
-  }
-  
-  .carousel {
+}
+
+.carousel {
     overflow: hidden;
     position: relative;
-  }
-  
-  .slide {
+}
+
+.slide {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -107,15 +107,15 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-  }
-  
-  .slide img {
+}
+
+.slide img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
-  
-  .caption {
+}
+
+.caption {
     color: #fff;
     font-size: 40px;
     text-align: center;
@@ -123,19 +123,64 @@ body {
     bottom: 50px;
     left: 50%;
     transform: translateX(-50%);
-  }
-  
-  #header {
+}
+
+#header {
     background-color: lightgray;
     padding: 20px;
-  }
-  
-  #main {
+}
+
+#main {
     padding: 20px;
-  }
-  
-  #footer {
+}
+
+#footer {
     background-color: lightgray;
     padding: 20px;
     text-align: center;
-  }
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+
+h1 {
+    text-align: center;
+    font-size: 36px;
+    color: #333;
+    margin-top: 50px;
+}
+
+.profile-picture {
+    display: block;
+    margin: 0 auto;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+}
+
+.about-me {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 18px;
+    color: #333;
+}
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.skill {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 10px;
+    width: 200px;
+    text-align: center;
+}
