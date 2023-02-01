@@ -1,2 +1,3 @@
-# lukestrazz.github.io
+lukestrazz.github.io/contents/index
 Personal Website
+
