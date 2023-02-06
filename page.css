@@ -59,17 +59,15 @@ body {
     text-align: center;
     }
     
-    .header-btn {
+    .header-button {
     display: inline-block;
     padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    text-emphasis-color: #111;
-    text-decoration: none;
-    color:  #f6c4a1; 
-    background-color: #000000;
+    font-size: 20px;
+    background-color: lightgray;
+    border: 1px solid gray;
     border-radius: 10px;
-    transition: all 0.2s ease-in-out;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
     }
     
     .header-btn:hover {
@@ -90,3 +88,19 @@ body {
     padding: 20px;
     text-align: center;
     }
+
+    @media only screen and (max-width: 480px) {
+        div {
+          width: 100%;
+          height: auto;
+          border-radius: 0;
+        }
+
+        .header-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+            border-radius: 0;
+          }
+      }
