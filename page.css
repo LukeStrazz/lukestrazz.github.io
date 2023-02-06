@@ -1,14 +1,31 @@
 body {
     font-family: 'Acumin Pro', sans-serif;
-    background-color: #34495E; /* navy blue-grey */
+    background-color: #7691ad; 
     }
     
     h1 {
     text-align: center;
     font-size: 36px;
-    color: #333;
+    color: rgb(0, 0, 0);
     margin-top: 50px;
     }
+
+    div {
+        width: 500px;
+        height: 300px;
+        background-color: lightgray;
+        border: 1px solid gray;
+        border-radius: 10px;
+        text-align: center;
+        overflow: hidden;
+        margin: 0 auto;
+        transition: all 0.3s ease-in-out;
+      }
+    
+      div:hover {
+        transform: scale(1.1);
+        box-shadow: 0px 0px 10px gray;
+      }
     
     .profile-picture {
     display: block;
@@ -34,7 +51,7 @@ body {
     
     .skill {
     background-color: #333;
-    color:  #9B870C; /* tan */
+    color:  #765517; 
     padding: 20px;
     border-radius: 10px;
     margin: 10px;
@@ -47,15 +64,16 @@ body {
     padding: 10px 20px;
     font-size: 16px;
     font-weight: bold;
+    text-emphasis-color: #111;
     text-decoration: none;
-    color:  #9B870C; /* tan */
-    background-color: #9B870C; /* tan */
+    color:  #f6c4a1; 
+    background-color: #000000;
     border-radius: 10px;
     transition: all 0.2s ease-in-out;
     }
     
     .header-btn:hover {
-    background-color: #9B870C; /* tan */
+    background-color: #bc9270; 
     }
     
     #header {
