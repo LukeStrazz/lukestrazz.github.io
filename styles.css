@@ -66,3 +66,21 @@ footer {
   padding: 1rem;
   margin-top: 1rem;
 }
+
+.nav-container img {
+  float: left;
+  margin-right: 1rem;
+}
+
+.nav-container ul {
+  display: inline-block;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.nav-container li {
+  display: inline-block;
+  margin-right: 1rem;
+}
