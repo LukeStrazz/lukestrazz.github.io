@@ -6,14 +6,21 @@
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/x-icon" href="https://avatars.githubusercontent.com/u/98197481?v=4" />
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <app-root></app-root>
-    <router-outlet></router-outlet>
-
-
-    <div>
-      test
+    <div id="page-container">
+      <div id="content-wrap">
+        <div class="container">
+          <app-navbar></app-navbar>
+          <div class="card main" id="styledText">
+            <img id="center-img" src="image4.jpg" alt="logo" />
+            <router-outlet></router-outlet>
+          </div>
+        </div>
+      </div>
+      <app-footer id="footer"></app-footer>
     </div>
   </body>
 </html>
+
