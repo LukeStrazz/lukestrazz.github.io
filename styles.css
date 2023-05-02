@@ -59,6 +59,11 @@ img {
   margin-bottom: 1rem;
 }
 
+#logo-img{
+  max-width: 40px;
+  margin-bottom: 1rem;
+}
+
 footer {
   background-color: #333;
   color: #fff;
