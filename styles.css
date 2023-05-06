@@ -121,3 +121,40 @@ a:hover, a:focus {
   max-width: 40px;
   margin-bottom: 1rem;
 }
+
+nav ul.nav-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style-type: none;
+  width: 100%;
+}
+
+nav ul li.nav-item {
+  position: relative;
+}
+
+nav ul li a {
+  display: inline-block;
+  padding: 0.5rem;
+}
+
+nav ul.dropdown {
+  display: none;
+  position: absolute;
+  background-color: var(--color-btn-bg);
+  list-style: none;
+  padding: 0;
+  top: 100%;
+  right: 0;
+}
+
+nav ul.dropdown li {
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+nav ul li:hover > .dropdown {
+  display: block;
+}
