@@ -1,83 +1,81 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Strazzera</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/x-icon" href="assets/noBGlogo.png" />
-  </head>
-  
+    <link rel="icon" type="image/x-icon" href="assets/noBGlogo.png"/>
+</head>
 <body>
-    <header>
-        <nav>
-          <div class="nav-container">
+<header>
+    <nav>
+        <div class="nav-container">
             <img id="logo-img" src="assets//FULLSTRAZZLOGO.png" alt="STRAZZlogo">
             <ul>
-              <button class="theme-toggle">Toggle Theme</button>
-
-              <li><a href="#about">About</a></li>
-              <li><a href="#projects">Projects</a></li>
-              <li><a href="#contact">Contact</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><button class="theme-toggle">Toggle Theme</button></li>
             </ul>
-          </div>          
-        </nav>
-    </header>
-    <main>
-        <section id="about">
-            <h1>About Me</h1>
-            <img src="assets/image4.jpg" alt="Luke Strazz">
-            <p>
-                Hello, 
-                <br>
-                I'm Luke-Angelo Strazzera, a software engineer with experience in C, Java, Solidity and SQL. 
-                <br>
-                I'm passionate about learning new technologies and building.
-            </p>
-        </section>
-        <section id="projects">
-            <h1>Projects:</h1>
-            <article>
-              <h2>ToonVerse Studios <img id="project-img" src="assets/toonverseLogocirle.png" alt="ToonVerseLogo"></h2> 
-              <p>Actively helping daily to impliment stratigies,
+        </div>
+    </nav>
+</header>
+<main>
+    <section id="about">
+        <h1>About Me</h1>
+        <img src="assets/image4.jpg" alt="Luke Strazz">
+        <p>
+            Hello,
+            <br>
+            I'm Luke-Angelo Strazzera, a software engineer with experience in C, Java, Solidity and SQL.
+            <br>
+            I'm passionate about learning new technologies and building.
+        </p>
+    </section>
+    <section id="projects">
+        <h1>Projects:</h1>
+        <article>
+            <h2>ToonVerse Studios <img id="project-img" src="assets/toonverseLogocirle.png" alt="ToonVerseLogo"></h2>
+            <p>Actively helping daily to implement strategies,
                 <br>
                 Provide solutions, and respond to the community in a professional, productive manner.
-              </p>
-          </article>
-          <br>
-          <br>
-            <article>
-                <h2>StrazzTunedBuddy<img id="project-img" src="assets/buddy2.png" alt="StrazzTunedBuddy"></h2>
-                <p>Inspired from a Dasai Mochi,
-                  <br>
-                  This little buddy is powered by C++ and an Arduino,
-                  <br>
-                  He comes to life by an OLED and will never leave you hanging!
-                </p>
-            </article>
-        </section>
-        <section id="contact">
-            <h1>Contact</h1>
-            <p>Feel free to reach out to me:</p>
-            <ul>
-                <li>Email: lukestrazzera@gmail.com</li>
-                <li>LinkedIn: <a href="https://www.linkedin.com/in/luke-angelo-strazzera-83b7171b4//">https://www.linkedin.com/in/luke-angelo-strazzera-83b7171b4/</a></li>
-                <li>GitHub: <a href="https://github.com/LukeStrazz">https://github.com/LukeStrazz</a></li>
-            </ul>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2023 Luke Strazz. All rights reserved.</p>
-    </footer>
-    <script>
-      function setTheme() {
-          const root = document.documentElement;
-          const newTheme = root.className === 'dark' ? 'light' : 'dark';
-          root.className = newTheme;
-      }
-      
-      document.querySelector('.theme-toggle').addEventListener('click', setTheme);
-  </script>
+            </p>
+        </article>
+        <br>
+        <br>
+        <article>
+            <h2>StrazzTunedBuddy<img id="project-img" src="assets/buddy2.png" alt="StrazzTunedBuddy"></h2>
+            <p>Inspired from a Dasai Mochi,
+                <br>
+                This little buddy is powered by C++ and an Arduino,
+                <br>
+                He comes to life by an OLED and will never leave you hanging!
+            </p>
+        </article>
+    </section>
+    <section id="contact">
+        <h1>Contact</h1>
+        <p>Feel free to reach out to me:</p>
+        <ul>
+            <li>Email: lukestrazzera@gmail.com</li>
+            <li>LinkedIn: <a href="https://www.linkedin.com/in/luke-angelo-strazzera-83b7171b4//">https://www.linkedin.com/in/luke-angelo-strazzera-83b7171b4/</a></li>
+            <li>GitHub: <a href="https://github.com/LukeStrazz">https://github.com/LukeStrazz</a></li>
+        </ul>
+    </section>
+</main>
+<footer>
+    <p>&copy; 2023 Luke Strazz. All rights reserved.</p>
+</footer>
+<script>
+        function setTheme() {
+        const root = document.querySelector("html");
+        const newTheme = root.className === "dark" ? "light" : "dark";
+        root.className = newTheme;
+    }
+
+    document.querySelector(".theme-toggle").addEventListener("click", setTheme);
+</script>
 </body>
 </html>
 
