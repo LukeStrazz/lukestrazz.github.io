@@ -8,12 +8,14 @@
     <link rel="icon" type="image/x-icon" href="assets/noBGlogo.png" />
   </head>
   
-<body>
+<body class = "dark">
     <header>
         <nav>
           <div class="nav-container">
             <img id="logo-img" src="assets//FULLSTRAZZLOGO.png" alt="STRAZZlogo">
             <ul>
+              <button class="theme-toggle">Toggle Theme</button>
+
               <li><a href="#about">About</a></li>
               <li><a href="#projects">Projects</a></li>
               <li><a href="#contact">Contact</a></li>
@@ -67,6 +69,15 @@
     <footer>
         <p>&copy; 2023 Luke Strazz. All rights reserved.</p>
     </footer>
+    <script>
+      function setTheme() {
+          const root = document.documentElement;
+          const newTheme = root.className === 'dark' ? 'light' : 'dark';
+          root.className = newTheme;
+      }
+      
+      document.querySelector('.theme-toggle').addEventListener('click', setTheme);
+  </script>
 </body>
 </html>
 
