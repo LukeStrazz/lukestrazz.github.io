@@ -25,11 +25,17 @@ body {
   line-height: 1.6;
   background-color: var(--color-base-bg);
   color: var(--color-base-text);
+  padding-top: 60px;
 }
 
 header {
   background-color: var(--color-btn-bg);
   padding: 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
 }
 
 nav ul {
@@ -53,7 +59,23 @@ nav ul li a:hover {
   color: var(--link-color);
 }
 
-main {
+.theme-toggle {
+  background-color: var(--color-btn-bg);
+  border: var(--border-btn);
+  font-size: 1.125rem;
+  padding: 10px 20px;
+  color: var(--color-base-text);
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.theme-toggle:hover {
+  background-color: var(--link-color);
+  color: var(--color-base-bg);
+}
+
+.main {
   padding: 1rem;
 }
 
@@ -80,23 +102,6 @@ footer {
   margin-top: 1rem;
 }
 
-.theme-toggle {
-  background-color: var(--color-btn-bg);
-  border: var(--border-btn);
-  font-size: 1.125rem;
-  padding: 10px 20px;
-  color: var(--color-base-text);
-  cursor: pointer;
-}
-
-.theme-toggle:hover {
-  background-color: var(--link-color);
-}
-
-.theme-toggle:focus {
-  outline: var(--border-btn);
-}
-
 a, a:visited {
   color: var(--link-color);
   text-decoration: none;
@@ -106,14 +111,13 @@ a:hover, a:focus {
   text-decoration: underline;
 }
 
-
-#project-img{
+#project-img {
   max-width: 75px;
   border-radius: 50%;
   margin-bottom: 1rem;
 }
 
-#logo-img{
+#logo-img {
   max-width: 40px;
   margin-bottom: 1rem;
 }
