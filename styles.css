@@ -121,13 +121,17 @@ a:hover, a:focus {
   max-width: 40px;
   margin-bottom: 1rem;
 }
+nav {
+  width: 100%;
+}
 
 nav ul.nav-list {
   display: flex;
   justify-content: space-between;
   align-items: center;
   list-style-type: none;
-  width: 100%;
+  padding: 0;
+  margin: 0;
 }
 
 nav ul li.nav-item {
@@ -157,4 +161,8 @@ nav ul.dropdown li {
 
 nav ul li:hover > .dropdown {
   display: block;
+}
+
+.theme-toggle-container {
+  margin-right: 10px;
 }
