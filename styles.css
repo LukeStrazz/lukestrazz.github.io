@@ -177,12 +177,20 @@ nav ul li:hover > .dropdown {
   margin-left: 0px;
 }
 
+.button-list {
+  list-style-type: none;
+  text-align: center;
+}
+
+.button-list li {
+  display: inline-block;
+}
+
 .link-button {
   display: inline-block;
-  padding: 10px 20px; /* Adjust padding for consistent size */
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  background-color: var(--color-btn-bg);
+  padding: 0;
+  border: none;
+  background-color: transparent;
   transition: transform 0.3s;
 }
 
@@ -191,16 +199,7 @@ nav ul li:hover > .dropdown {
 }
 
 .button-image {
-  max-width: 100%;
+  max-width: 150px;
+  border-radius: 50%;
   vertical-align: middle;
 }
-
-ul {
-  list-style-type: none;
-}
-
-ul li {
-  display: inline-block;
-  margin-right: 10px; /* Add spacing between buttons */
-}
-
