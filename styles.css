@@ -180,6 +180,7 @@ nav ul li:hover > .dropdown {
 .button-list {
   list-style-type: none;
   text-align: center;
+  white-space: nowrap;
 }
 
 .button-list li {
