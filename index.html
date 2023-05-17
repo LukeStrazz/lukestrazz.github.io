@@ -11,17 +11,19 @@
 <header>
   <nav>
     <ul class="nav-list">
-      <li class="nav-logo">
-        <img id="logo-img" src="assets//FULLSTRAZZLOGO.png" alt="STRAZZlogo">
-      </li>
       <li class="nav-item">
         <a href="#" class="menu">Menu</a>
-        <ul class="dropdown">
-          <li><a href="#about">About</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
+        <ul id="dropdown-menu" class="dropdown">
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
-      </li>
+    </li>
+    
+    <li class="nav-logo">
+        <img id="logo-img" src="assets//FULLSTRAZZLOGO.png" alt="STRAZZlogo">
+    </li>
+    
       <li class="nav-item theme-toggle-container">
         <button class="theme-toggle">Toggle Theme</button>
       </li>
@@ -95,6 +97,14 @@
         const newTheme = root.className === "dark" ? "light" : "dark";
         root.className = newTheme;
     }
+    document.getElementById("logo-img").addEventListener("click", function() {
+    var dropdownMenu = document.getElementById("dropdown-menu");
+    if (dropdownMenu.style.display === "none") {
+        dropdownMenu.style.display = "block";
+    } else {
+        dropdownMenu.style.display = "none";
+    }
+});
 
     document.querySelector(".theme-toggle").addEventListener("click", setTheme);
 </script>
