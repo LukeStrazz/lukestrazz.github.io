@@ -176,3 +176,21 @@ nav ul li:hover > .dropdown {
 .theme-toggle-container {
   margin-left: 0px;
 }
+
+.link-button {
+  display: inline-block;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: var(--color-btn-bg);
+  transition: transform 0.3s;
+}
+
+.link-button:hover {
+  transform: scale(1.1);
+}
+
+.button-image {
+  max-width: 100%;
+  vertical-align: middle;
+}
