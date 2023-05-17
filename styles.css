@@ -179,7 +179,7 @@ nav ul li:hover > .dropdown {
 
 .link-button {
   display: inline-block;
-  padding: 10px;
+  padding: 10px 20px; /* Adjust padding for consistent size */
   border: 1px solid #ddd;
   border-radius: 4px;
   background-color: var(--color-btn-bg);
@@ -194,3 +194,13 @@ nav ul li:hover > .dropdown {
   max-width: 100%;
   vertical-align: middle;
 }
+
+ul {
+  list-style-type: none;
+}
+
+ul li {
+  display: inline-block;
+  margin-right: 10px; /* Add spacing between buttons */
+}
+
