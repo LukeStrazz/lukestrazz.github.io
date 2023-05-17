@@ -10,6 +10,7 @@
   --color-base-text: rgb(240, 240, 240);
   --color-btn-bg: rgb(36, 36, 36);
   --link-color: rgb(100, 149, 237);
+  --border-color: #ffffff;
 }
 
 :root.light {
@@ -18,6 +19,7 @@
   --color-base-text: rgb(18, 18, 18);
   --color-btn-bg: rgb(220, 220, 220);
   --link-color: rgb(65, 105, 225);
+  --border-color: #000000;
 }
 
 body {
@@ -83,7 +85,7 @@ nav ul li a:hover {
 section {
   margin-bottom: 2rem;
   text-align: center; 
-  border: 2px solid #ffffff; 
+  border: 2px solid var(--border-color);
   padding: 20px; 
   max-width: 800px; 
   margin-left: auto; 
