@@ -61,6 +61,34 @@ nav ul li a:hover {
   color: var(--link-color);
 }
 
+nav ul.nav-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li.nav-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+nav ul.dropdown {
+  display: none;
+  position: absolute;
+  background-color: var(--color-btn-bg);
+  list-style: none;
+  padding: 0;
+  right: 0;
+}
+
+nav ul li.nav-logo:hover > .dropdown {
+  display: block;
+}
+
 .theme-toggle {
   background-color: var(--color-btn-bg);
   border: var(--border-btn);
