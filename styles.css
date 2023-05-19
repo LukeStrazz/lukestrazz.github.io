@@ -160,6 +160,9 @@ a:hover, a:focus {
   margin-top: 1rem;
   max-width: 70px;
   margin-bottom: 1rem;
+}
+
+#logo-img:hover{
   transform: scale(1.1);
 }
 
