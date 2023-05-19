@@ -74,6 +74,7 @@ nav ul li.nav-logo {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  transform: scale(1.1);
 }
 
 nav ul.dropdown {
@@ -202,7 +203,6 @@ nav ul.dropdown li {
 
 nav ul li:hover > .dropdown {
   display: block;
-  transform: scale(1.1);
 }
 
 .theme-toggle-container {
