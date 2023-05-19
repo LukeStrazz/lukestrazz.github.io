@@ -159,6 +159,7 @@ a:hover, a:focus {
   margin-top: 1rem;
   max-width: 70px;
   margin-bottom: 1rem;
+  transform: scale(1.1);
 }
 
 nav {
