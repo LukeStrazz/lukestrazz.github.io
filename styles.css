@@ -84,6 +84,7 @@ nav ul.dropdown {
   list-style: none;
   padding: 0;
   left: 0;
+  margin-top: 10rem;
 }
 
 nav ul li.nav-logo:hover > .dropdown {
