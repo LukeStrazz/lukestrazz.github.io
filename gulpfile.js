@@ -17,7 +17,7 @@ var paths = {
 // Copy HTML
 gulp.task('copy-html', function() {
     return gulp.src('index.html')
-        .pipe(gulp.dest('dist'));
+        .pipe(gulp.dest('docs'));
 });
 
 // Copy CSS
@@ -25,21 +25,21 @@ gulp.task('copy-css', function() {
     return gulp.src('styles.css')
         .pipe(postcss([cssnano()]))
         .pipe(rename({suffix: '.min'}))
-        .pipe(gulp.dest('dist'));
+        .pipe(gulp.dest('docs'));
 });
 
 // Copy assets
 gulp.task('copy-assets', function() {
     return gulp.src('assets/**/*')
-        .pipe(gulp.dest('dist/assets'));
+        .pipe(gulp.dest('docs/assets'));
 });
 
 
 // Server task
 gulp.task('connect', function() {
     connect.server({
-        root: 'dist',
-        port: 8082,
+        root: 'docs',
+        port: 4042,
         livereload: true
     });
 });
