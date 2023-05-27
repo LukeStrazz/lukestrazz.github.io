@@ -26,6 +26,7 @@ gulp.task('copy-css', function() {
         .pipe(postcss([cssnano()]))
         .pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest('docs'));
+
 });
 
 // Copy assets
@@ -40,7 +41,7 @@ gulp.task('connect', function() {
     connect.server({
         root: 'docs',
         port: 4042,
-        livereload: true
+
     });
 });
 
