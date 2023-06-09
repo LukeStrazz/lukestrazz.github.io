@@ -47,7 +47,8 @@ nav ul {
 }
 
 nav ul li {
-  margin-left: 1rem;
+  margin-left: 0.5rem;
+    padding-right: 1vw;
 }
 
 nav ul li a {
@@ -82,10 +83,9 @@ nav ul.dropdown {
   position: absolute;
   background-color: var(--color-btn-bg);
   list-style: none;
-  padding: 0;
-  left: 0;
-  width: 18%;
-  margin-top: 10rem;
+  padding: 0.5vw;
+  margin-top: 11rem;
+  text-align: center;
 }
 
 nav ul li.nav-logo:hover > .dropdown {
