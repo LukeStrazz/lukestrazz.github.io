@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap');
+body{
+	font-size: 16px;
+	line-height: 32px;
+	font-weight: 400;
+	-moz-osx-font-smoothing: grayscale;
+	word-break: break-word;
+	-webkit-font-smoothing: antialiased;
+	font-family: "Kumbh Sans", sans-serif;
+	margin: 0;
+}
+* {
+	margin: 0;
+	padding: 0;
+	border: none;
+	outline: none;
+	font-size: 100%;
+}
+
+*, :after, :before {
+	box-sizing: border-box;
+}
+
+/* ============ HERO SECTION ============= */
+.creative-hero--section{
+	position: relative;
+	overflow: hidden;
+	height: 100vh;
+}
+.creative-hero--section .bg {
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background-repeat: no-repeat;
+	background-position: 50%;
+	background-size: cover;
+}
+.creative-hero--section .bg-overlay {
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background-image: url(https://imgpanda.com/upload/ib/rn73B7bqty.png);
+	background-position: 0 0;
+	background-size: 56.5% 100%;
+	background-repeat: no-repeat;
+	animation: fadeIn 0.5s ease-in-out 0.3s forwards;
+}
+.auto-container {
+	max-width: 1310px;
+}
+
+.auto-container {
+	position: static;
+	padding: 0 15px;
+	margin: 0 auto;
+	width: 100%;
+	height: 100%;
+}
+.creative-hero--section .content-box {
+	position: relative;
+	max-width: 540px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 100%;
+	animation: fadeInUp 1s ease-in-out 0.6s forwards;
+}
+.creative-hero--section .content-box .hero-subtitle {
+	display: block;
+	font-size: 16px;
+	line-height: 22px;
+	color: #fff;
+	font-weight: 700;
+	letter-spacing: .8px;
+	margin-bottom: 33px;
+	opacity: 0;
+	animation: fadeInUp 0.6s ease-in-out 0.6s forwards;
+}
+.creative-hero--section .content-box .hero-title {
+	color: #fff;
+	line-height: 1.1em;
+	letter-spacing: -3px;
+	text-transform: capitalize;
+	margin-bottom: 28px;
+	font-size: 75px;
+	font-weight: 600;
+	opacity: 0;
+	animation: fadeInUp 0.6s ease-in-out 0.9s forwards;
+}
+.creative-hero--section .content-box .hero-desc {
+	color: #fff;
+	margin-bottom: 40px;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 32px;
+	opacity: 0;
+	animation: fadeInUp 0.6s ease-in-out 1.2s forwards;
+}
+.content-box .btn-box{
+	opacity: 0;
+	animation: fadeInUp 0.6s ease-in-out 1.6s forwards;
+}
+.content-box .btn-box .hero-cta {
+	position: relative;
+	font-size: 16px;
+	line-height: 24px;
+	padding: 20px 40px;
+	font-weight: 600;
+	overflow: hidden;
+	color: #fff;
+	background: #134cb3;
+	letter-spacing: .8px;
+	border-radius: 7px;
+	text-decoration: none;
+	display: inline-flex;
+	justify-content: center;
+	text-align: center;
+	white-space: nowrap;
+	transition: all .3s ease;
+}
+
+.content-box .btn-box .hero-cta:before {
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	content: "";
+	border-radius: 7px;
+	transform: scaleX(0);
+	transform-origin: top right;
+	transition: transform .5s cubic-bezier(.86, 0, .07, 1);
+	background-color: #fff;
+}
+
+.content-box .btn-box .hero-cta:hover {
+	box-shadow: 0 10px 30px rgba(0, 0, 0, .1);
+	color: #16243e;
+}
+
+.content-box .btn-box .hero-cta:hover:before {
+	transform: scaleX(1);
+	transform-origin: bottom left;
+}
+
+.btn-box .hero-cta .cta-title{
+	position: relative;
+	display: flex;
+	align-items: center;
+}
+.btn-box .hero-cta .cta-title i{
+	position: relative;
+	display: block;
+	margin-left: 10px;
+}
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes fadeInUp {
+	from {
+		opacity: 0;
+		transform: translate3d(0, 40px, 0);
+	}
+	to {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
+}
+/* ======== Sticky Footer ========= */
+  .sticky-footer{
+       position: fixed;
+    width: 100%;
+        background: #333;
+    z-index: 999;
+    bottom: 0;
+  }
+.sticky-footer .footer-row{
+      display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 10px;
+    padding-right: 15px;
+}
+.creditd a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+        font-size: 16px;
+}
+.social ul{
+      display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0px;
+    column-gap: 10px;
+    align-items: center;
+}
+.social ul li a{
+     display: flex;
+    background: #fff;
+    height: 30px;
+    width: 30px;
+    border-radius: 4px;
+    align-items: center;
+    justify-content: center;
+}
+.social ul li a img{
+       max-width: 20px;
+}
+/* =================== RESPONSIVE IPAD PRO ============================= */
+@media (max-width: 1366px) {
+    .creative-hero--section .bg-overlay {
+        background-image: none;
+        background-color: #16243e;
+        mix-blend-mode: hard-light;
+    }
+}
+/* =================== RESPONSIVE IPAD  ============================= */
+@media (max-width: 991px) {
+	.creative-hero--section{
+		    height: auto;
+    padding: 130px 0px;
+	}
+
+    .creative-hero--section .content-box{
+    	max-width: 100%;
+    	    text-align: center;
+    }
+}
+/* =================== RESPONSIVE IPHONE  ============================= */
+@media (max-width: 575px) {
+    .creative-hero--section .content-box .hero-title {
+        font-size: 44px;
+    }
+    .creative-hero--section .content-box .hero-desc{
+    	font-size: 15px;
+    }
+}
