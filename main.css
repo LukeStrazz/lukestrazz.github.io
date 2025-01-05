@@ -3,7 +3,7 @@
     --black: #333;
     --dark-red: rgba(255, 0, 0, 0.5);
     --grey: #666;
-    --lighter-black: #19292e;
+    --awesome-blue: #00475d;
     --red: rgba(255, 0, 0, 0.75);
     --white: #f9fcff;
   }
@@ -12,7 +12,6 @@
   
   html {
     box-sizing: border-box;
-    min-width: 400px;
   }
   
   *,
@@ -24,7 +23,7 @@
   ::selection,
   ::-moz-selection {
     background: var(--red);
-    color: var(--lighter-black);
+    color: var(--awesome-blue);
   }
   
   /* Text styles */
@@ -79,7 +78,7 @@
   h4,
   h5,
   h6 {
-    color: var(--lighter-black);
+    color: var(--awesome-blue);
   }
   
   p,
@@ -168,7 +167,7 @@
   }
   
   .heading {
-    color: var(--lighter-black);
+    color: var(--awesome-blue);
     line-height: 1;
     margin: 0;
     position: absolute;
@@ -194,8 +193,8 @@
   }
   
   .header-btn {
-    background: var(--lighter-black);
-    border: 2px solid var(--lighter-black);
+    background: var(--awesome-blue);
+    border: 2px solid var(--awesome-blue);
     border-radius: 4px;
     box-shadow: none;
     color: var(--white);
@@ -210,14 +209,14 @@
   .header-btn:hover {
     background: var(--white);
     box-shadow: none;
-    color: var(--lighter-black);
+    color: var(--awesome-blue);
   }
   
   .main-photo {
     background: url("https://media.licdn.com/dms/image/v2/D4E03AQEfbd1mKO_ojw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1671177916994?e=2147483647&v=beta&t=XRx_halpjEvR4tLnb190VnbPz6FUEq77daMMW8hChFE");
     background-position: center;
     background-size: cover;
-    border: 7px solid var(--lighter-black);
+    border: 7px solid var(--awesome-blue);
     border-radius: 50%;
     height: 20em;
     position: absolute;
@@ -241,7 +240,7 @@
   /* Portfolio Styles */
   
   .portfolio-img svg {
-    fill: var(--lighter-black);
+    fill: var(--awesome-blue);
     width: 100%;
   }
   
@@ -274,7 +273,7 @@
   textarea,
   button {
     background: var(--white);
-    border: 5px solid var(--lighter-black);
+    border: 5px solid var(--awesome-blue);
     border-radius: 4px;
     padding: 1em;
     width: 100%;
@@ -303,7 +302,7 @@
   }
   
   #contact-form-submit {
-    background-color: var(--lighter-black);
+    background-color: var(--awesome-blue);
     color: var(--white);
     cursor: pointer;
     font-weight: bold;
@@ -312,12 +311,12 @@
   
   #contact-form-submit:hover {
     background-color: var(--white);
-    color: var(--lighter-black);
+    color: var(--awesome-blue);
   }
   
   #contact-form-submit:active {
     background-color: var(--red);
-    color: var(--lighter-black);
+    color: var(--awesome-blue);
   }
   
   /* Footer Styles */
@@ -330,7 +329,7 @@
   
   /* General Styles */
   .dark-bg {
-    background: var(--lighter-black);
+    background: var(--awesome-blue);
     color: var(--white);
   }
   
@@ -492,7 +491,7 @@
     }
   
     .intro {
-      font-size: 6em;
+      font-size: 4em;
     }
   
     .lead {
