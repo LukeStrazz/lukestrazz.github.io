@@ -5,7 +5,9 @@
     "main": "index.js",
     "homepage": "https://lukestrazz.github.io/resume",
     "scripts": {
-        "test": "test1"
+        "test": "test1",
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build"
     },
     "repository": {
         "type": "git",
