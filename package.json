@@ -3,7 +3,6 @@
     "version": "1.0.0",
     "description": "Personal Website",
     "main": "index.js",
-    "homepage": "https://lukestrazz.github.io/resume",
     "scripts": {
         "test": "test1"
     },
