@@ -19,8 +19,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "predeploy": "npm run build",  
+    "copy-build": "powershell -Command \"Remove-Item -Recurse -Force ../resume -ErrorAction SilentlyContinue; New-Item -ItemType Directory ../resume; Copy-Item -Recurse ./build/* ../resume/\"",
+    "deploy": "npm run build && npm run copy-build"
   },
   "eslintConfig": {
     "extends": [
