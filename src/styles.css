@@ -1,0 +1,984 @@
+/* ============================================================================
+   styles.css — black & gold design system
+   ----------------------------------------------------------------------------
+   Layered model:
+     1. .experience-layer  — fixed, full-screen three.js canvas (z 0)
+     2. .vignette          — radial darkening for text legibility (z 1)
+     3. UI                 — glass panels and type floating above (z 2+)
+   ========================================================================== */
+
+/* ------------------------------- tokens --------------------------------- */
+
+:root {
+  --ink-950: #030303;
+  --ink-900: #0a0a0d;
+  --ink-800: #121217;
+
+  --gold-200: #ffeebc;
+  --gold-300: #f7d98c;
+  --gold-400: #e8bc5a;
+  --gold-500: #d4a23d;
+  --gold-700: #8a6420;
+
+  --text: #ece6d8;
+  --muted: #a39c8e;
+  --faint: #6f6a60;
+
+  --line: rgba(212, 162, 61, 0.16);
+  --line-strong: rgba(212, 162, 61, 0.38);
+  --glass: rgba(8, 8, 11, 0.58);
+
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  --radius: 20px;
+  --radius-sm: 12px;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* -------------------------------- reset --------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px;
+}
+
+body {
+  background: var(--ink-950);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: var(--gold-500);
+  color: var(--ink-950);
+}
+
+/* Slim gold scrollbar to match the theme. */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--ink-950);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--gold-700), var(--gold-500));
+  border-radius: 99px;
+  border: 2px solid var(--ink-950);
+}
+
+/* ----------------------------- backdrop layers --------------------------- */
+
+.experience-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+
+.experience-fallback {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 40%, #181206 0%, var(--ink-950) 60%);
+}
+
+.vignette {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 50% 35%, rgba(3, 3, 3, 0.22) 0%, rgba(3, 3, 3, 0.5) 70%, rgba(3, 3, 3, 0.85) 100%),
+    linear-gradient(rgba(3, 3, 3, 0.5), transparent 18%, transparent 82%, rgba(3, 3, 3, 0.7));
+}
+
+/* Black veil over everything on first load — fades out as the 3D ignites. */
+.intro-veil {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  background: var(--ink-950);
+  animation: veil-lift 1.4s ease-out 0.3s forwards;
+}
+
+@keyframes veil-lift {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.site {
+  position: relative;
+}
+
+.site > .topbar,
+.site > .page,
+.site > .footer,
+.site > .back-to-top {
+  position: relative;
+  z-index: 2;
+}
+
+/* ----------------------------- scroll progress --------------------------- */
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold-700), var(--gold-300));
+  transform: scaleX(0);
+  transform-origin: left;
+  box-shadow: 0 0 12px rgba(232, 188, 90, 0.6);
+}
+
+/* -------------------------------- topbar --------------------------------- */
+
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 18px clamp(20px, 5vw, 56px);
+  background: linear-gradient(rgba(3, 3, 3, 0.78), rgba(3, 3, 3, 0.32) 80%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(212, 162, 61, 0.08);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.brand-mark {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 8px rgba(232, 188, 90, 0.45));
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.brand-name em {
+  font-style: normal;
+  color: var(--gold-400);
+}
+
+.nav {
+  display: flex;
+  gap: clamp(16px, 2.5vw, 34px);
+}
+
+.nav a {
+  position: relative;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 6px 0;
+  transition: color 0.3s var(--ease-out);
+}
+
+/* Gold underline grows in from the left on hover. */
+.nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold-400), transparent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s var(--ease-out);
+}
+
+.nav a:hover {
+  color: var(--gold-300);
+}
+
+.nav a:hover::after {
+  transform: scaleX(1);
+}
+
+/* -------------------------------- buttons -------------------------------- */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 28px;
+  border-radius: 99px;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition:
+    transform 0.3s var(--ease-out),
+    box-shadow 0.3s var(--ease-out),
+    background 0.3s var(--ease-out),
+    border-color 0.3s var(--ease-out),
+    color 0.3s var(--ease-out);
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.button-primary {
+  background: linear-gradient(120deg, var(--gold-300), var(--gold-500) 55%, var(--gold-700));
+  color: var(--ink-950);
+  box-shadow: 0 4px 24px rgba(212, 162, 61, 0.35);
+}
+
+.button-primary:hover {
+  box-shadow: 0 8px 36px rgba(232, 188, 90, 0.55);
+}
+
+.button-ghost {
+  border-color: var(--line-strong);
+  color: var(--gold-300);
+  background: rgba(212, 162, 61, 0.04);
+}
+
+.button-ghost:hover {
+  border-color: var(--gold-400);
+  background: rgba(212, 162, 61, 0.12);
+  box-shadow: 0 0 24px rgba(212, 162, 61, 0.2);
+}
+
+/* --------------------------------- type ---------------------------------- */
+
+.eyebrow {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold-400);
+}
+
+.gradient-text {
+  background: linear-gradient(100deg, var(--gold-200) 0%, var(--gold-400) 45%, var(--gold-700) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  line-height: 1.12;
+  font-weight: 600;
+}
+
+/* --------------------------------- page ---------------------------------- */
+
+.page {
+  width: min(1180px, calc(100% - clamp(32px, 8vw, 96px)));
+  margin: 0 auto;
+}
+
+/* ---------------------------------- hero --------------------------------- */
+
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: clamp(40px, 6vh, 72px);
+  padding: 140px 0 96px;
+}
+
+.hero-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  max-width: 760px;
+}
+
+.hero-eyebrow {
+  text-shadow: 0 0 18px rgba(232, 188, 90, 0.4);
+}
+
+.hero-title {
+  font-size: clamp(3rem, 9.5vw, 6.75rem);
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  line-height: 0.98;
+  text-shadow: 0 12px 60px rgba(0, 0, 0, 0.85);
+}
+
+/*
+  Cinematic load-in: hero copy materializes in stages, timed against the 3D
+  camera pull-back (~4.4s). The title lands first while the camera is still
+  sweeping out, then the supporting copy and actions settle in around it.
+*/
+.hero-inner .hero-eyebrow,
+.hero-inner .hero-title,
+.hero-inner .hero-sub,
+.hero-inner .hero-actions {
+  opacity: 0;
+  animation: hero-materialize 1.5s var(--ease-out) forwards;
+}
+
+.hero-inner .hero-title {
+  animation-delay: 1s;
+  animation-duration: 1.8s;
+}
+
+.hero-inner .hero-eyebrow {
+  animation-delay: 1.7s;
+}
+
+.hero-inner .hero-sub {
+  animation-delay: 2s;
+}
+
+.hero-inner .hero-actions {
+  animation-delay: 2.3s;
+}
+
+@keyframes hero-materialize {
+  from {
+    opacity: 0;
+    transform: translateY(38px) scale(1.04);
+    filter: blur(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.hero-sub {
+  max-width: 580px;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.4vw, 1.125rem);
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.9);
+}
+
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  width: min(880px, 100%);
+}
+
+.stat {
+  padding: 18px 22px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  background: var(--glass);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  text-align: left;
+  transition: border-color 0.35s var(--ease-out), transform 0.35s var(--ease-out);
+}
+
+.stat:hover {
+  border-color: var(--line-strong);
+  transform: translateY(-3px);
+}
+
+.stat span {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--faint);
+  margin-bottom: 6px;
+}
+
+.stat strong {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+/* Animated scroll cue: a capsule with a falling gold dot. */
+.scroll-cue {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 26px;
+  height: 44px;
+  border: 1px solid var(--line-strong);
+  border-radius: 99px;
+  display: flex;
+  justify-content: center;
+  padding-top: 8px;
+  /* Arrives last, after the cinematic intro has fully resolved. */
+  opacity: 0;
+  animation: cue-arrive 1.2s var(--ease-out) 3.2s forwards;
+}
+
+@keyframes cue-arrive {
+  to {
+    opacity: 1;
+  }
+}
+
+.scroll-cue span {
+  width: 4px;
+  height: 8px;
+  border-radius: 99px;
+  background: var(--gold-300);
+  box-shadow: 0 0 10px rgba(232, 188, 90, 0.8);
+  animation: cue-drop 2s var(--ease-out) infinite;
+}
+
+@keyframes cue-drop {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  70% {
+    transform: translateY(16px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+}
+
+/* -------------------------------- sections ------------------------------- */
+
+.section {
+  padding: clamp(48px, 8vh, 96px) 0;
+}
+
+.panel {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--glass);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  padding: clamp(28px, 4.5vw, 56px);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
+}
+
+.section-header {
+  max-width: 640px;
+  margin-bottom: clamp(28px, 4vw, 44px);
+  display: grid;
+  gap: 12px;
+}
+
+.section-header h2 {
+  font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+  letter-spacing: -0.01em;
+}
+
+.section-body {
+  color: var(--muted);
+}
+
+/* ------------------------------ reveal motion ---------------------------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.9s var(--ease-out),
+    transform 0.9s var(--ease-out);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ------------------------------- card grids ------------------------------ */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  padding: 24px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  background: rgba(212, 162, 61, 0.03);
+  transition: border-color 0.35s var(--ease-out), transform 0.35s var(--ease-out), background 0.35s var(--ease-out);
+}
+
+.card:hover {
+  border-color: var(--line-strong);
+  background: rgba(212, 162, 61, 0.07);
+  transform: translateY(-4px);
+}
+
+.card h3 {
+  font-size: 1.05rem;
+  color: var(--gold-300);
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+.signal-row {
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px 28px;
+}
+
+.signal-row p {
+  font-size: 0.88rem;
+  color: var(--muted);
+  padding-left: 16px;
+  position: relative;
+}
+
+/* Gold tick before each supporting signal. */
+.signal-row p::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold-500);
+  box-shadow: 0 0 8px rgba(212, 162, 61, 0.7);
+}
+
+/* --------------------------------- skills -------------------------------- */
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.skill-card {
+  padding: 24px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  background: rgba(212, 162, 61, 0.03);
+  transition: border-color 0.35s var(--ease-out);
+}
+
+.skill-card:hover {
+  border-color: var(--line-strong);
+}
+
+.skill-card h3 {
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-400);
+  margin-bottom: 16px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chips span {
+  padding: 6px 14px;
+  border-radius: 99px;
+  border: 1px solid var(--line);
+  font-size: 0.78rem;
+  color: var(--text);
+  background: rgba(3, 3, 3, 0.5);
+  transition: border-color 0.3s var(--ease-out), color 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+}
+
+.chips span:hover {
+  border-color: var(--gold-400);
+  color: var(--gold-300);
+  box-shadow: 0 0 14px rgba(212, 162, 61, 0.25);
+}
+
+/* -------------------------------- timeline ------------------------------- */
+
+.timeline {
+  position: relative;
+  display: grid;
+  gap: 28px;
+  padding-left: 28px;
+}
+
+/* The vertical gold rail. */
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: linear-gradient(var(--gold-400), rgba(212, 162, 61, 0.05));
+}
+
+.timeline-item {
+  position: relative;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: -28px;
+  top: 8px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--ink-950);
+  border: 2px solid var(--gold-400);
+  box-shadow: 0 0 12px rgba(232, 188, 90, 0.65);
+}
+
+.timeline-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 22px 26px;
+  background: rgba(212, 162, 61, 0.03);
+  transition: border-color 0.35s var(--ease-out), transform 0.35s var(--ease-out);
+}
+
+.timeline-card:hover {
+  border-color: var(--line-strong);
+  transform: translateX(4px);
+}
+
+.timeline-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.timeline-head p {
+  font-size: 0.74rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.timeline-head h3 {
+  font-size: 1.15rem;
+  color: var(--gold-300);
+}
+
+.timeline-head span {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  color: var(--gold-400);
+  white-space: nowrap;
+}
+
+.timeline-card ul {
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+
+.timeline-card li {
+  font-size: 0.9rem;
+  color: var(--muted);
+  padding-left: 18px;
+  position: relative;
+}
+
+.timeline-card li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--gold-700);
+}
+
+/* -------------------------------- projects ------------------------------- */
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+.project-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: rgba(3, 3, 3, 0.55);
+  transition: border-color 0.4s var(--ease-out), transform 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out);
+}
+
+.project-card:hover {
+  border-color: var(--line-strong);
+  transform: translateY(-6px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(212, 162, 61, 0.12);
+}
+
+.project-image {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.85);
+  transition: transform 0.7s var(--ease-out), filter 0.7s var(--ease-out);
+}
+
+.project-card:hover .project-image img {
+  transform: scale(1.06);
+  filter: saturate(1);
+}
+
+.project-copy {
+  padding: 20px 22px 24px;
+}
+
+.project-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-400);
+  margin-bottom: 6px;
+}
+
+.project-copy h3 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+.project-copy p:last-child {
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+/* -------------------------------- contact -------------------------------- */
+
+.contact-panel {
+  text-align: left;
+}
+
+.contact-email {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 4vw, 2.6rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 28px;
+  transition: filter 0.3s var(--ease-out);
+}
+
+.contact-email:hover {
+  filter: brightness(1.25) drop-shadow(0 0 18px rgba(232, 188, 90, 0.5));
+}
+
+.contact-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+
+.working-style {
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+/* --------------------------------- footer -------------------------------- */
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  width: min(1180px, calc(100% - clamp(32px, 8vw, 96px)));
+  margin: 0 auto;
+  padding: 32px 0 40px;
+  border-top: 1px solid var(--line);
+  font-size: 0.82rem;
+  color: var(--faint);
+}
+
+.footer-note {
+  color: var(--gold-700);
+}
+
+/* ------------------------------- back to top ----------------------------- */
+
+.back-to-top {
+  position: fixed;
+  right: 26px;
+  bottom: 26px;
+  z-index: 8;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid var(--line-strong);
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--gold-300);
+  font-size: 18px;
+  cursor: pointer;
+  transition: border-color 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out), transform 0.3s var(--ease-out);
+}
+
+.back-to-top:hover {
+  border-color: var(--gold-400);
+  box-shadow: 0 0 24px rgba(212, 162, 61, 0.35);
+  transform: translateY(-3px);
+}
+
+/* ------------------------------- responsive ------------------------------ */
+
+@media (max-width: 960px) {
+  .nav {
+    display: none; /* anchor sections remain reachable by scrolling */
+  }
+
+  .hero-stats {
+    grid-template-columns: 1fr;
+    width: min(420px, 100%);
+  }
+}
+
+@media (max-width: 640px) {
+  .topbar-cta {
+    display: none;
+  }
+
+  .hero {
+    padding-top: 120px;
+  }
+
+  .timeline {
+    padding-left: 22px;
+  }
+
+  .timeline-marker {
+    left: -22px;
+  }
+
+  .back-to-top {
+    right: 16px;
+    bottom: 16px;
+  }
+}
+
+/* --------------------------- reduced effects mode ------------------------- */
+
+/* Small screens render the core closer to the text — darken harder. */
+.reduced-effects .vignette {
+  background:
+    radial-gradient(ellipse at 50% 35%, rgba(3, 3, 3, 0.2) 0%, rgba(3, 3, 3, 0.6) 70%, rgba(3, 3, 3, 0.9) 100%),
+    linear-gradient(rgba(3, 3, 3, 0.55), transparent 18%, transparent 82%, rgba(3, 3, 3, 0.75));
+}
+
+/* Touch devices / reduced motion: cheaper blur, no reveal slide. */
+.reduced-effects .panel,
+.reduced-effects .stat,
+.reduced-effects .topbar,
+.reduced-effects .back-to-top {
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .scroll-cue span {
+    animation: none;
+  }
+
+  /* No cinematic stagger: everything is simply present. */
+  .intro-veil {
+    display: none;
+  }
+
+  .hero-inner .hero-eyebrow,
+  .hero-inner .hero-title,
+  .hero-inner .hero-sub,
+  .hero-inner .hero-actions,
+  .scroll-cue {
+    opacity: 1;
+    animation: none;
+  }
+}
