@@ -11,6 +11,7 @@ import { Suspense, lazy, useEffect, useRef, useState } from 'react';
 import profileImage from '../assets/optimized/fullstrazz-hero.jpg';
 import buddy from '../assets/optimized/buddy-card.png';
 import toonverse from '../assets/optimized/toonverse-card.png';
+import vitalVues from '../assets/vital-vues-logo.png';
 import brandMark from '../assets/noBGlogo.png';
 
 // The 3D scene is code-split so the UI paints instantly.
@@ -143,7 +144,7 @@ const projects = [
   {
     title: 'VitalVues',
     label: 'OpenAI application',
-    image: toonverse,
+    image: vitalVues,
     text: 'An AI diet and workout planner built around the OpenAI API, prompt design, recommendation flows, and a clean user-facing experience.'
   },
   {
