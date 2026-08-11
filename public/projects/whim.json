@@ -1,0 +1,39 @@
+{
+  "slug": "whim",
+  "title": "WHIM",
+  "tagline": "A cross-platform .NET 9 product built on a clean-architecture backend",
+  "visibility": "private",
+  "repo": null,
+  "year": "2026",
+  "role": "Architecture and full-stack development",
+  "summary": "A multi-project .NET 9 solution pairing a layered backend with mobile clients. The codebase is deliberately partitioned — domain, application, infrastructure, and contracts are separate projects — so business rules stay independent of storage, transport, and platform concerns.",
+  "highlights": [
+    "Clean-architecture layering enforced at the project level, so dependencies point inward rather than by convention alone.",
+    "Containerised from the start, with separate compose definitions for local, staging, and production.",
+    "Ships an admin surface and a dedicated media-processing service alongside the main API."
+  ],
+  "stack": [
+    "C#",
+    ".NET 9",
+    "ASP.NET Core",
+    "Entity Framework Core",
+    "PostgreSQL (Npgsql)",
+    ".NET MAUI Blazor",
+    "React Native",
+    "Docker Compose",
+    "nginx",
+    "Serilog",
+    "JWT / OAuth"
+  ],
+  "methodology": [
+    "Split the solution into Domain, Application, Infrastructure, and Contracts projects so the core has no dependency on EF Core, HTTP, or the mobile clients.",
+    "Backed persistence with PostgreSQL through EF Core migrations, with connection settings supplied per environment.",
+    "Ran the stack under Docker Compose with distinct local, staging, and production overrides, fronted by nginx.",
+    "Built mobile clients against a shared Contracts project so DTOs cannot drift between backend and app.",
+    "Handled identity with JWT and OAuth integrations, and instrumented the services with Serilog.",
+    "Scripted the local setup so a fresh clone generates its own environment file with safe local defaults instead of shared secrets."
+  ],
+  "gallery": [],
+  "galleryNote": "This is a private repository and the product is pre-release, so source and interface screenshots are not published here.",
+  "links": []
+}

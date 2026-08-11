@@ -1,0 +1,36 @@
+{
+  "slug": "strazztunedbuddy",
+  "title": "StrazzTunedBuddy",
+  "tagline": "An open-source driving companion for your car",
+  "visibility": "public",
+  "repo": "LukeStrazz/StrazzTunedBuddy",
+  "year": "2023",
+  "role": "Sole author",
+  "summary": "A little expressive companion that sits on your dashboard: an Arduino Nano driving a 128x64 OLED, cycling through moods — regular blinking eyes, heart eyes, side-eye, and a sleep state. Inspired by the Dasai Mochi, but fully open source, so anyone can build one for the cost of a microcontroller and a screen.",
+  "highlights": [
+    "The most-starred and most-forked project on my GitHub, built and shared entirely as open hardware.",
+    "Every expression is drawn procedurally from primitives — no sprite sheets or bitmap assets — so the whole firmware is a single readable file.",
+    "Published with a full parts list, wiring guide, and a companion 3D-printable case so the build is genuinely reproducible."
+  ],
+  "stack": ["C++", "Arduino Nano", "Adafruit GFX", "SSD1306 OLED", "I2C", "3D printing"],
+  "methodology": [
+    "Drove the display with the Adafruit SSD1306 and GFX libraries over I2C on an Arduino Nano.",
+    "Composed each facial expression from GFX primitives (filled rectangles, circles, and triangles) and animated them by redrawing the framebuffer between timed delays.",
+    "Randomised the expression selection in the main loop so the companion feels reactive rather than looping predictably.",
+    "Documented the hardware bill of materials and wiring so the project could be forked and built by others — which it has been, 19 times."
+  ],
+  "gallery": [
+    { "src": "regeyes.gif", "caption": "regEyes — the default idle loop, round eyes with a blink" },
+    { "src": "heart.gif", "caption": "heart — heart-shaped eyes above a rounded smile" },
+    { "src": "carroteyes.gif", "caption": "carrotEyes — angled chevron eyes with a smile" },
+    { "src": "sideeye.gif", "caption": "sideEye — blinking while the eyes shift wider apart" },
+    { "src": "sleep.gif", "caption": "sleep — closed eyes and a small mouth" },
+    { "src": "wakeup.gif", "caption": "wakeUp — the winking sequence played on power-on" }
+  ],
+  "galleryNote": "These are not mockups: the firmware's own drawing calls were interpreted and rasterised at the device's real 128x64 resolution and frame timings, so each loop is exactly what the OLED displays.",
+  "links": [
+    { "label": "Source (StrazzBuddy1.ino)", "href": "https://github.com/LukeStrazz/StrazzTunedBuddy/blob/main/StrazzBuddy1.ino" },
+    { "label": "3D-printable case", "href": "https://www.thingiverse.com/thing:5863359" },
+    { "label": "Inspired by Dasai Mochi", "href": "https://dasai.com.au/pages/meet-mochi" }
+  ]
+}

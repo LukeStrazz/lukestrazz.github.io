@@ -1,0 +1,42 @@
+{
+  "slug": "vitalvues",
+  "title": "VitalVues",
+  "tagline": "Making bloodwork results understandable the moment you get them",
+  "visibility": "public",
+  "repo": "LukeStrazz/VitalVues",
+  "year": "2024",
+  "role": "Senior capstone — CSC490, Farmingdale State College",
+  "summary": "Most people get bloodwork back and have no idea what any of it means, then wait days for a doctor to translate it. VitalVues takes uploaded results and explains each marker in plain language immediately, then uses those same results to generate diet, workout, and supplement guidance tailored to what the person is actually short on.",
+  "highlights": [
+    "Full ASP.NET Core MVC application, not a prototype: authentication, payments, email, persistence, and AI generation all wired together.",
+    "Results are stored over time, so users can compare a new panel against previous ones and see progression rather than isolated numbers.",
+    "AI output is grounded in the user's own uploaded values, so recommendations respond to their actual deficiencies instead of generic advice."
+  ],
+  "stack": [
+    "C#",
+    ".NET 8",
+    "ASP.NET Core MVC",
+    "Entity Framework Core",
+    "SQL Server",
+    "OpenAI API",
+    "Auth0",
+    "Stripe",
+    "SendGrid",
+    "Razor",
+    "JavaScript"
+  ],
+  "methodology": [
+    "Structured the solution across three projects — web, services, and data — so persistence and integrations stayed separate from the MVC layer.",
+    "Modelled bloodwork panels and user history in EF Core with code-first migrations applied on startup.",
+    "Designed prompts that pass a user's own marker values to the OpenAI API, so explanations and plans are derived from their results rather than generic templates.",
+    "Integrated Auth0 for identity, Stripe for subscription billing, and SendGrid for transactional email.",
+    "Added supporting health tooling around the core flow: fasting tracking, BMI tracking, journals, meal planning, and goal setting."
+  ],
+  "gallery": [
+    { "src": "logo.png", "caption": "VitalVues brand mark" }
+  ],
+  "galleryNote": "Screenshots of the running application are not included here: the app requires SQL Server plus private Auth0, Stripe, and SendGrid credentials that are not part of the public repository, so it cannot be stood up from a clean checkout alone.",
+  "links": [
+    { "label": "Repository", "href": "https://github.com/LukeStrazz/VitalVues" }
+  ]
+}

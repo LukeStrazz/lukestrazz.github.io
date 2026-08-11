@@ -147,23 +147,38 @@
 
   "projects": [
     {
-      "title": "Saberin Software",
-      "label": "Production delivery",
-      "imageKey": "saberin",
-      "text": "Secure .NET delivery, AI integration, cloud identity work, team leadership, and shipping features that hold up in production."
+      "title": "StrazzTunedBuddy",
+      "label": "Open-source hardware · 105★",
+      "imageKey": "buddy",
+      "text": "An Arduino driving companion with procedurally drawn expressions on a 128x64 OLED — the most-starred and most-forked project on my GitHub.",
+      "repo": "https://github.com/LukeStrazz/StrazzTunedBuddy",
+      "page": "/projects/strazztunedbuddy/"
     },
     {
       "title": "VitalVues",
       "label": "OpenAI application",
       "imageKey": "vitalVues",
-      "text": "An AI diet and workout planner built around the OpenAI API, prompt design, recommendation flows, and a clean user-facing experience.",
-      "repo": "https://github.com/LukeStrazz/VitalVues"
+      "text": "A senior capstone that explains bloodwork results in plain language, then builds diet and workout guidance from the user's own markers.",
+      "repo": "https://github.com/LukeStrazz/VitalVues",
+      "page": "/projects/vitalvues/"
     },
     {
-      "title": "StrazzTunedBuddy",
-      "label": "Embedded side project",
-      "imageKey": "buddy",
-      "text": "A hardware-focused project proving out C++ and embedded tinkering while still showing personality and design instinct."
+      "title": "WHIM",
+      "label": "Private · .NET 9 product",
+      "text": "A clean-architecture .NET 9 solution with PostgreSQL, containerised services, and cross-platform mobile clients.",
+      "page": "/projects/whim/"
+    },
+    {
+      "title": "Strazz Robinhood MCP",
+      "label": "Private · MCP server",
+      "text": "A Model Context Protocol server exposing brokerage research and risk-managed, paper-trading-by-default execution to AI clients.",
+      "page": "/projects/strazz-robinhood-mcp/"
+    },
+    {
+      "title": "Saberin Software",
+      "label": "Production delivery",
+      "imageKey": "saberin",
+      "text": "Secure .NET delivery, AI integration, cloud identity work, team leadership, and shipping features that hold up in production."
     }
   ],
 

@@ -1,0 +1,35 @@
+{
+  "slug": "strazz-robinhood-mcp",
+  "title": "Strazz Robinhood MCP",
+  "tagline": "An MCP server for market research and risk-managed trading",
+  "visibility": "private",
+  "repo": null,
+  "year": "2026",
+  "role": "Sole author",
+  "summary": "A Model Context Protocol server that gives an AI assistant safe, structured access to brokerage data — quotes, positions, fundamentals, and portfolio state — plus an execution path that is explicitly risk-managed and defaults to paper trading rather than live orders.",
+  "highlights": [
+    "Built on MCP, so the same toolset works with any MCP-capable client rather than being tied to one assistant.",
+    "Risk controls and a paper-trading mode are part of the design, not an afterthought — the safe path is the default path.",
+    "Backed by a substantial automated test suite covering the tool surface and trading logic."
+  ],
+  "stack": [
+    "Python 3.11+",
+    "FastMCP",
+    "Model Context Protocol",
+    "robin_stocks",
+    "pytest",
+    "ruff",
+    "C#",
+    "JavaScript"
+  ],
+  "methodology": [
+    "Exposed brokerage capabilities as discrete MCP tools with typed inputs, so an assistant can compose them without free-form scraping.",
+    "Separated research/read-only tools from anything capable of placing an order, and gated execution behind explicit risk checks.",
+    "Defaulted to paper trading so the system can be exercised end to end without risking capital.",
+    "Maintained roughly 56 test modules alongside linting and coverage tooling to keep the trading logic verifiable.",
+    "Kept credentials strictly in environment configuration, never in the repository."
+  ],
+  "gallery": [],
+  "galleryNote": "No screenshots are published for this project. It is a private repository, and its interface surfaces real brokerage account data — positions, balances, and order history — which should not appear in a public portfolio.",
+  "links": []
+}

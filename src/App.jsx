@@ -88,7 +88,7 @@ function useAdaptiveEffects() {
  * Reveal-on-scroll wrapper: starts hidden, fades and rises into place the
  * first time it enters the viewport. `delay` staggers siblings.
  */
-function Reveal({ as: Tag = 'div', className = '', delay = 0, children }) {
+function Reveal({ as: Tag = 'div', className = '', delay = 0, children, ...rest }) {
   const ref = useRef(null);
 
   useEffect(() => {
@@ -110,7 +110,12 @@ function Reveal({ as: Tag = 'div', className = '', delay = 0, children }) {
   }, []);
 
   return (
-    <Tag ref={ref} className={`reveal ${className}`} style={delay ? { transitionDelay: `${delay}ms` } : undefined}>
+    <Tag
+      ref={ref}
+      className={`reveal ${className}`}
+      style={delay ? { transitionDelay: `${delay}ms` } : undefined}
+      {...rest}
+    >
       {children}
     </Tag>
   );
@@ -319,18 +324,37 @@ export default function App() {
                   body="Enterprise delivery, AI product work, and enough curiosity to keep building outside the day job."
                 />
                 <div className="project-grid">
-                  {resume.projects.map((project, index) => (
-                    <Reveal as="article" className="project-card" key={project.title} delay={index * 110}>
-                      <div className="project-image">
-                        <img src={projectImages[project.imageKey]} alt={project.title} loading="lazy" decoding="async" />
-                      </div>
-                      <div className="project-copy">
-                        <p className="project-label">{project.label}</p>
-                        <h3>{project.title}</h3>
-                        <p>{project.text}</p>
-                      </div>
-                    </Reveal>
-                  ))}
+                  {resume.projects.map((project, index) => {
+                    const image = projectImages[project.imageKey];
+                    const body = (
+                      <>
+                        {/* Private projects ship no artwork, so the image block is optional. */}
+                        {image ? (
+                          <div className="project-image">
+                            <img src={image} alt={project.title} loading="lazy" decoding="async" />
+                          </div>
+                        ) : null}
+                        <div className="project-copy">
+                          <p className="project-label">{project.label}</p>
+                          <h3>{project.title}</h3>
+                          <p>{project.text}</p>
+                          {project.page ? <span className="project-more">Read more →</span> : null}
+                        </div>
+                      </>
+                    );
+
+                    return (
+                      <Reveal
+                        as={project.page ? 'a' : 'article'}
+                        className={`project-card${project.page ? ' project-card-link' : ''}`}
+                        key={project.title}
+                        delay={index * 110}
+                        href={project.page}
+                      >
+                        {body}
+                      </Reveal>
+                    );
+                  })}
                 </div>
               </Reveal>
             </section>
