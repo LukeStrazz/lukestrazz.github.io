@@ -6,9 +6,10 @@
     "heroLastLine": "Strazzera",
     "title": "Software Engineer",
     "tagline": "AI · Cloud · Full-Stack Engineering",
-    "summary": "Software engineer building secure applications, modern interfaces, and production-ready systems — across C#, .NET, React, Azure, AWS, and OpenAI-powered workflows.",
-    "role": "Developer Team Lead",
-    "company": "Saberin Software",
+    "summary": "Software engineer building secure applications, modern interfaces, and production-ready systems — joining the U.S. Department of the Treasury as an IT Specialist (AI) on August 31, 2026, after leading full-stack and cloud delivery at Saberin Software.",
+    "role": "IT Specialist (AI)",
+    "roleStatus": "Incoming — starts Aug 31, 2026",
+    "company": "U.S. Department of the Treasury",
     "email": "lukestrazzera@gmail.com",
     "website": "https://lukestrazz.github.io",
     "github": "LukeStrazz",
@@ -19,9 +20,9 @@
   },
 
   "quickFacts": [
+    { "label": "Incoming Role", "value": "IT Specialist (AI) · U.S. Dept. of the Treasury — starts Aug 31, 2026" },
     { "label": "Current Role", "value": "Developer Team Lead · Saberin Software" },
-    { "label": "Focus", "value": "AI features, cloud delivery, identity, full-stack" },
-    { "label": "Trajectory", "value": "Intern to team lead since 2023" }
+    { "label": "Trajectory", "value": "Intern to team lead to federal AI specialist since 2023" }
   ],
 
   "capabilities": [
@@ -50,7 +51,7 @@
     },
     {
       "title": "AI & Automation",
-      "items": ["Azure OpenAI", "OpenAI API", "AI Agents", "Prompt Engineering", "GitHub Copilot"]
+      "items": ["Azure OpenAI", "OpenAI API", "AI Agents", "Prompt Engineering", "GitHub Copilot", "AI Governance & Policy"]
     },
     {
       "title": "Cloud & DevOps",
@@ -69,7 +70,9 @@
         "YAML",
         "Azure DevOps",
         "GitHub Actions",
-        "Git"
+        "Git",
+        "DevSecOps",
+        "Digital Engineering"
       ]
     },
     {
@@ -92,9 +95,19 @@
 
   "experience": [
     {
+      "company": "U.S. Department of the Treasury — Departmental Offices",
+      "role": "IT Specialist (AI)",
+      "dates": "Starting Aug 31, 2026",
+      "points": [
+        "Formulating technical strategies, standards, and architectures that advance the secure and ethical deployment of AI across Treasury and, by extension, the federal government.",
+        "Ensuring Treasury's systems meet mission, cybersecurity, and performance requirements using Agile, DevSecOps, and Digital Engineering best practices.",
+        "Bringing a full-stack and cloud engineering background — Azure OpenAI delivery, cloud identity, and production systems — into federal AI strategy and governance work."
+      ]
+    },
+    {
       "company": "Saberin Software",
       "role": "Developer Team Lead",
-      "dates": "Apr 2025 — Present",
+      "dates": "Apr 2025 — Aug 2026",
       "points": [
         "Lead production development for .NET applications, reviewing code for quality, security, performance, and long-term maintainability.",
         "Designed and shipped AI-powered features using Azure OpenAI for both internal workflows and customer-facing experiences.",
