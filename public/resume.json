@@ -1,0 +1,224 @@
+{
+  "$schema": "https://lukestrazz.github.io/resume.json",
+  "meta": {
+    "name": "Luke‑Angelo Strazzera",
+    "heroFirstLine": "Luke‑Angelo",
+    "heroLastLine": "Strazzera",
+    "title": "Software Engineer",
+    "tagline": "AI · Cloud · Full-Stack Engineering",
+    "summary": "Software engineer building secure applications, modern interfaces, and production-ready systems — across C#, .NET, React, Azure, AWS, and OpenAI-powered workflows.",
+    "role": "Developer Team Lead",
+    "company": "Saberin Software",
+    "email": "lukestrazzera@gmail.com",
+    "website": "https://lukestrazz.github.io",
+    "github": "LukeStrazz",
+    "githubUrl": "https://github.com/LukeStrazz",
+    "linkedin": "https://www.linkedin.com/in/luke-angelo-strazzera-83b7171b4",
+    "updatedAt": "2026-08-10"
+  },
+
+  "quickFacts": [
+    { "label": "Current Role", "value": "Developer Team Lead · Saberin Software" },
+    { "label": "Focus", "value": "AI features, cloud delivery, identity, full-stack" },
+    { "label": "Trajectory", "value": "Intern to team lead since 2023" }
+  ],
+
+  "capabilities": [
+    {
+      "title": "Full-stack delivery",
+      "text": "Production work across C#, .NET, React, JavaScript, TypeScript, SQL, and REST APIs, with a strong emphasis on stable releases and maintainable code."
+    },
+    {
+      "title": "AI and automation",
+      "text": "Hands-on delivery with Azure OpenAI, the OpenAI API, prompt engineering, GitHub Copilot, and agent-assisted workflows for internal and customer-facing tools."
+    },
+    {
+      "title": "Cloud and identity",
+      "text": "Azure and AWS experience spanning Entra ID, Azure AD B2C, app registrations, Blob Storage, Data Factory, EC2, S3, IAM, and CloudFront."
+    },
+    {
+      "title": "Team execution",
+      "text": "Comfortable owning architecture, configuration, deployment, debugging, documentation, and stakeholder communication from kickoff through release."
+    }
+  ],
+
+  "skillGroups": [
+    {
+      "title": "Languages & Frameworks",
+      "items": ["C#", ".NET", "C++", "JavaScript", "TypeScript", "React", "SQL"]
+    },
+    {
+      "title": "AI & Automation",
+      "items": ["Azure OpenAI", "OpenAI API", "AI Agents", "Prompt Engineering", "GitHub Copilot"]
+    },
+    {
+      "title": "Cloud & DevOps",
+      "items": [
+        "Microsoft Azure",
+        "Entra ID / Azure AD",
+        "Azure AD B2C",
+        "Blob Storage",
+        "Data Factory",
+        "App Registrations",
+        "AWS EC2",
+        "AWS S3",
+        "AWS IAM",
+        "CloudFront",
+        "CI/CD Pipelines",
+        "YAML",
+        "Azure DevOps",
+        "GitHub Actions",
+        "Git"
+      ]
+    },
+    {
+      "title": "Engineering & Architecture",
+      "items": [
+        "REST APIs",
+        "Cloud Identity & Access Management",
+        "Application Configuration & Deployment",
+        "Cloud Resource Definitions",
+        "Secure Application Development",
+        "Debugging",
+        "API Design"
+      ]
+    },
+    {
+      "title": "Tools & Workflow",
+      "items": ["Visual Studio", "GitHub", "Jira", "Confluence", "Agile Development", "Documentation", "Communication"]
+    }
+  ],
+
+  "experience": [
+    {
+      "company": "Saberin Software",
+      "role": "Developer Team Lead",
+      "dates": "Apr 2025 — Present",
+      "points": [
+        "Lead production development for .NET applications, reviewing code for quality, security, performance, and long-term maintainability.",
+        "Designed and shipped AI-powered features using Azure OpenAI for both internal workflows and customer-facing experiences.",
+        "Own Azure delivery across subscriptions, Entra ID, Azure AD B2C, app registrations, Blob Storage, and Data Factory resources."
+      ]
+    },
+    {
+      "company": "Saberin Software",
+      "role": "Junior Software Developer",
+      "dates": "Dec 2024 — Apr 2025",
+      "points": [
+        "Built and deployed cloud-hosted applications across Azure and AWS, including EC2, S3, IAM, CloudFront, and Azure storage services.",
+        "Maintained YAML-based CI/CD pipelines in Azure DevOps and GitHub Actions to support repeatable deployments.",
+        "Delivered application features across APIs, configuration, and debugging workflows while collaborating directly with stakeholders."
+      ]
+    },
+    {
+      "company": "Saberin Software",
+      "role": "Entry Level Developer",
+      "dates": "Aug 2023 — Dec 2024",
+      "points": [
+        "Used GitHub Copilot and AI agent workflows to accelerate implementation, documentation, and troubleshooting without lowering code quality.",
+        "Contributed to React and .NET application work, API integrations, SQL-backed flows, and production issue resolution.",
+        "Grew from task execution into feature ownership while balancing software delivery with a full academic schedule."
+      ]
+    },
+    {
+      "company": "Saberin Software",
+      "role": "Software Developer Intern",
+      "dates": "May 2023 — Aug 2023",
+      "points": [
+        "Entered the team through hands-on production work with a strong focus on debugging, secure development practices, and reliability.",
+        "Built the foundation for the intern-to-team-lead progression by showing consistency, communication, and ownership early.",
+        "Worked inside established engineering workflows using Git, Visual Studio, Jira, Confluence, and team documentation standards."
+      ]
+    }
+  ],
+
+  "projects": [
+    {
+      "title": "Saberin Software",
+      "label": "Production delivery",
+      "imageKey": "saberin",
+      "text": "Secure .NET delivery, AI integration, cloud identity work, team leadership, and shipping features that hold up in production."
+    },
+    {
+      "title": "VitalVues",
+      "label": "OpenAI application",
+      "imageKey": "vitalVues",
+      "text": "An AI diet and workout planner built around the OpenAI API, prompt design, recommendation flows, and a clean user-facing experience.",
+      "repo": "https://github.com/LukeStrazz/VitalVues"
+    },
+    {
+      "title": "StrazzTunedBuddy",
+      "label": "Embedded side project",
+      "imageKey": "buddy",
+      "text": "A hardware-focused project proving out C++ and embedded tinkering while still showing personality and design instinct."
+    }
+  ],
+
+  "education": [
+    {
+      "school": "Farmingdale State College",
+      "degree": "B.S. in Computer Science",
+      "dates": "Completed January 2025",
+      "details": ["3.65 GPA", "President's List 2023", "Dean's List 2023 – 2024"]
+    }
+  ],
+
+  "supportingSignals": [
+    "B.S. in Computer Science from Farmingdale State College, completed January 2025 with a 3.65 GPA.",
+    "President's List 2023 and Dean's List 2023 to 2024.",
+    "Strong communicator with experience translating technical work for stakeholders, teammates, and clients.",
+    "Built professional discipline in high-pressure service roles before moving full-time into software."
+  ],
+
+  "workingStyle": [
+    "Agile development",
+    "Client communication",
+    "Technical documentation",
+    "Mentorship",
+    "Cross-functional teamwork",
+    "Production debugging"
+  ],
+
+  "nav": [
+    { "label": "About", "href": "#about" },
+    { "label": "Skills", "href": "#skills" },
+    { "label": "Experience", "href": "#experience" },
+    { "label": "Work", "href": "#work" },
+    { "label": "Contact", "href": "#contact" }
+  ],
+
+  "techBadges": {
+    "Platforms & Tools": [
+      { "name": "Microsoft SQL Server", "color": "CC2927", "logo": "microsoft%20sql%20server" },
+      { "name": "Figma", "color": "F24E1E", "logo": "figma" },
+      { "name": "Jira", "color": "0A0FFF", "logo": "jira" },
+      { "name": "Arduino", "color": "00979D", "logo": "Arduino" },
+      { "name": "Docker", "color": "0db7ed", "logo": "docker" },
+      { "name": "GitHub Actions", "color": "2088FF", "logo": "githubactions" },
+      { "name": "Azure", "color": "0089D6", "logo": "microsoftazure" },
+      { "name": "AWS", "color": "FF9900", "logo": "amazonaws" }
+    ],
+    "Languages & Frameworks": [
+      { "name": "C#", "color": "239120", "logo": "c-sharp" },
+      { "name": ".NET", "color": "5C2D91", "logo": ".net" },
+      { "name": "C++", "color": "00599C", "logo": "c%2B%2B" },
+      { "name": "TypeScript", "color": "007ACC", "logo": "typescript" },
+      { "name": "JavaScript", "color": "323330", "logo": "javascript" },
+      { "name": "React", "color": "20232A", "logo": "react" },
+      { "name": "HTML5", "color": "E34F26", "logo": "html5" },
+      { "name": "CSS3", "color": "1572B6", "logo": "css3" },
+      { "name": "SQL", "color": "4479A1", "logo": "postgresql" }
+    ],
+    "AI & Automation": [
+      { "name": "Azure OpenAI", "color": "0089D6", "logo": "microsoftazure" },
+      { "name": "OpenAI API", "color": "74aa9c", "logo": "openai" },
+      { "name": "GitHub Copilot", "color": "000000", "logo": "githubcopilot" }
+    ],
+    "IDEs & Workflow": [
+      { "name": "Visual Studio", "color": "5C2D91", "logo": "visual-studio" },
+      { "name": "VS Code", "color": "0078d7", "logo": "visual-studio-code" },
+      { "name": "Git", "color": "F05033", "logo": "git" },
+      { "name": "GitHub", "color": "121011", "logo": "github" }
+    ]
+  }
+}
