@@ -19,6 +19,7 @@
     "Randomised the expression selection in the main loop so the companion feels reactive rather than looping predictably.",
     "Documented the hardware bill of materials and wiring so the project could be forked and built by others — which it has been, 19 times."
   ],
+  "pixelated": true,
   "gallery": [
     { "src": "regeyes.gif", "caption": "regEyes — the default idle loop, round eyes with a blink" },
     { "src": "heart.gif", "caption": "heart — heart-shaped eyes above a rounded smile" },

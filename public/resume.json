@@ -17,13 +17,20 @@
     "linkedin": "https://www.linkedin.com/in/luke-angelo-strazzera-83b7171b4",
     "updatedAt": "2026-08-11"
   },
-
   "quickFacts": [
-    { "label": "Agency", "value": "U.S. Department of the Treasury — Departmental Offices" },
-    { "label": "Focus", "value": "AI governance, secure systems, cloud delivery, full-stack" },
-    { "label": "Trajectory", "value": "Intern to team lead to federal AI specialist since 2023" }
+    {
+      "label": "Agency",
+      "value": "U.S. Department of the Treasury — Departmental Offices"
+    },
+    {
+      "label": "Focus",
+      "value": "AI governance, secure systems, cloud delivery, full-stack"
+    },
+    {
+      "label": "Trajectory",
+      "value": "Intern to team lead to federal AI specialist since 2023"
+    }
   ],
-
   "capabilities": [
     {
       "title": "Full-stack delivery",
@@ -42,15 +49,29 @@
       "text": "Comfortable owning architecture, configuration, deployment, debugging, documentation, and stakeholder communication from kickoff through release."
     }
   ],
-
   "skillGroups": [
     {
       "title": "Languages & Frameworks",
-      "items": ["C#", ".NET", "C++", "JavaScript", "TypeScript", "React", "SQL"]
+      "items": [
+        "C#",
+        ".NET",
+        "C++",
+        "JavaScript",
+        "TypeScript",
+        "React",
+        "SQL"
+      ]
     },
     {
       "title": "AI & Automation",
-      "items": ["Azure OpenAI", "OpenAI API", "AI Agents", "Prompt Engineering", "GitHub Copilot", "AI Governance & Policy"]
+      "items": [
+        "Azure OpenAI",
+        "OpenAI API",
+        "AI Agents",
+        "Prompt Engineering",
+        "GitHub Copilot",
+        "AI Governance & Policy"
+      ]
     },
     {
       "title": "Cloud & DevOps",
@@ -88,10 +109,17 @@
     },
     {
       "title": "Tools & Workflow",
-      "items": ["Visual Studio", "GitHub", "Jira", "Confluence", "Agile Development", "Documentation", "Communication"]
+      "items": [
+        "Visual Studio",
+        "GitHub",
+        "Jira",
+        "Confluence",
+        "Agile Development",
+        "Documentation",
+        "Communication"
+      ]
     }
   ],
-
   "experience": [
     {
       "company": "U.S. Department of the Treasury — Departmental Offices",
@@ -144,60 +172,62 @@
       ]
     }
   ],
-
   "projects": [
     {
       "title": "StrazzTunedBuddy",
       "label": "Open-source hardware · 105★",
-      "imageKey": "buddy",
       "text": "An Arduino driving companion with procedurally drawn expressions on a 128x64 OLED — the most-starred and most-forked project on my GitHub.",
       "repo": "https://github.com/LukeStrazz/StrazzTunedBuddy",
-      "page": "/projects/strazztunedbuddy/"
+      "page": "/projects/strazztunedbuddy/",
+      "image": "/assets/projects/cards/strazztunedbuddy.png"
     },
     {
       "title": "VitalVues",
       "label": "OpenAI application",
-      "imageKey": "vitalVues",
       "text": "A senior capstone that explains bloodwork results in plain language, then builds diet and workout guidance from the user's own markers.",
       "repo": "https://github.com/LukeStrazz/VitalVues",
-      "page": "/projects/vitalvues/"
+      "page": "/projects/vitalvues/",
+      "image": "/assets/projects/cards/vitalvues.png"
     },
     {
       "title": "WHIM",
       "label": "Private · .NET 9 product",
       "text": "A clean-architecture .NET 9 solution with PostgreSQL, containerised services, and cross-platform mobile clients.",
-      "page": "/projects/whim/"
+      "page": "/projects/whim/",
+      "image": "/assets/projects/cards/whim.svg"
     },
     {
       "title": "Strazz Robinhood MCP",
       "label": "Private · MCP server",
       "text": "A Model Context Protocol server exposing brokerage research and risk-managed, paper-trading-by-default execution to AI clients.",
-      "page": "/projects/strazz-robinhood-mcp/"
+      "page": "/projects/strazz-robinhood-mcp/",
+      "image": "/assets/projects/cards/strazz-robinhood-mcp.svg"
     },
     {
       "title": "Saberin Software",
       "label": "Production delivery",
-      "imageKey": "saberin",
-      "text": "Secure .NET delivery, AI integration, cloud identity work, team leadership, and shipping features that hold up in production."
+      "text": "Secure .NET delivery, AI integration, cloud identity work, team leadership, and shipping features that hold up in production.",
+      "image": "/assets/projects/cards/saberin.jpg"
     }
   ],
-
   "education": [
     {
       "school": "Farmingdale State College",
       "degree": "B.S. in Computer Science",
       "dates": "Completed January 2025",
-      "details": ["3.65 GPA", "President's List 2023", "Dean's List 2023 – 2024"]
+      "details": [
+        "3.65 GPA",
+        "President's List 2023",
+        "Dean's List 2023 – 2024"
+      ]
     }
   ],
-
   "supportingSignals": [
     "B.S. in Computer Science from Farmingdale State College, completed January 2025 with a 3.65 GPA.",
     "President's List 2023 and Dean's List 2023 to 2024.",
     "Strong communicator with experience translating technical work for stakeholders, teammates, and clients.",
     "Built professional discipline in high-pressure service roles before moving full-time into software."
   ],
-
   "workingStyle": [
     "Agile development",
     "Client communication",
@@ -206,47 +236,156 @@
     "Cross-functional teamwork",
     "Production debugging"
   ],
-
   "nav": [
-    { "label": "About", "href": "#about" },
-    { "label": "Skills", "href": "#skills" },
-    { "label": "Experience", "href": "#experience" },
-    { "label": "Work", "href": "#work" },
-    { "label": "Contact", "href": "#contact" }
+    {
+      "label": "About",
+      "href": "#about"
+    },
+    {
+      "label": "Skills",
+      "href": "#skills"
+    },
+    {
+      "label": "Experience",
+      "href": "#experience"
+    },
+    {
+      "label": "Work",
+      "href": "#work"
+    },
+    {
+      "label": "Contact",
+      "href": "#contact"
+    }
   ],
-
   "techBadges": {
     "Platforms & Tools": [
-      { "name": "Microsoft SQL Server", "color": "CC2927", "logo": "microsoft%20sql%20server" },
-      { "name": "Figma", "color": "F24E1E", "logo": "figma" },
-      { "name": "Jira", "color": "0A0FFF", "logo": "jira" },
-      { "name": "Arduino", "color": "00979D", "logo": "Arduino" },
-      { "name": "Docker", "color": "0db7ed", "logo": "docker" },
-      { "name": "GitHub Actions", "color": "2088FF", "logo": "githubactions" },
-      { "name": "Azure", "color": "0089D6", "logo": "microsoftazure" },
-      { "name": "AWS", "color": "FF9900", "logo": "amazonaws" }
+      {
+        "name": "Microsoft SQL Server",
+        "color": "CC2927",
+        "logo": "microsoft%20sql%20server"
+      },
+      {
+        "name": "Figma",
+        "color": "F24E1E",
+        "logo": "figma"
+      },
+      {
+        "name": "Jira",
+        "color": "0A0FFF",
+        "logo": "jira"
+      },
+      {
+        "name": "Arduino",
+        "color": "00979D",
+        "logo": "Arduino"
+      },
+      {
+        "name": "Docker",
+        "color": "0db7ed",
+        "logo": "docker"
+      },
+      {
+        "name": "GitHub Actions",
+        "color": "2088FF",
+        "logo": "githubactions"
+      },
+      {
+        "name": "Azure",
+        "color": "0089D6",
+        "logo": "microsoftazure"
+      },
+      {
+        "name": "AWS",
+        "color": "FF9900",
+        "logo": "amazonaws"
+      }
     ],
     "Languages & Frameworks": [
-      { "name": "C#", "color": "239120", "logo": "c-sharp" },
-      { "name": ".NET", "color": "5C2D91", "logo": ".net" },
-      { "name": "C++", "color": "00599C", "logo": "c%2B%2B" },
-      { "name": "TypeScript", "color": "007ACC", "logo": "typescript" },
-      { "name": "JavaScript", "color": "323330", "logo": "javascript" },
-      { "name": "React", "color": "20232A", "logo": "react" },
-      { "name": "HTML5", "color": "E34F26", "logo": "html5" },
-      { "name": "CSS3", "color": "1572B6", "logo": "css3" },
-      { "name": "SQL", "color": "4479A1", "logo": "postgresql" }
+      {
+        "name": "C#",
+        "color": "239120",
+        "logo": "c-sharp"
+      },
+      {
+        "name": ".NET",
+        "color": "5C2D91",
+        "logo": ".net"
+      },
+      {
+        "name": "C++",
+        "color": "00599C",
+        "logo": "c%2B%2B"
+      },
+      {
+        "name": "TypeScript",
+        "color": "007ACC",
+        "logo": "typescript"
+      },
+      {
+        "name": "JavaScript",
+        "color": "323330",
+        "logo": "javascript"
+      },
+      {
+        "name": "React",
+        "color": "20232A",
+        "logo": "react"
+      },
+      {
+        "name": "HTML5",
+        "color": "E34F26",
+        "logo": "html5"
+      },
+      {
+        "name": "CSS3",
+        "color": "1572B6",
+        "logo": "css3"
+      },
+      {
+        "name": "SQL",
+        "color": "4479A1",
+        "logo": "postgresql"
+      }
     ],
     "AI & Automation": [
-      { "name": "Azure OpenAI", "color": "0089D6", "logo": "microsoftazure" },
-      { "name": "OpenAI API", "color": "74aa9c", "logo": "openai" },
-      { "name": "GitHub Copilot", "color": "000000", "logo": "githubcopilot" }
+      {
+        "name": "Azure OpenAI",
+        "color": "0089D6",
+        "logo": "microsoftazure"
+      },
+      {
+        "name": "OpenAI API",
+        "color": "74aa9c",
+        "logo": "openai"
+      },
+      {
+        "name": "GitHub Copilot",
+        "color": "000000",
+        "logo": "githubcopilot"
+      }
     ],
     "IDEs & Workflow": [
-      { "name": "Visual Studio", "color": "5C2D91", "logo": "visual-studio" },
-      { "name": "VS Code", "color": "0078d7", "logo": "visual-studio-code" },
-      { "name": "Git", "color": "F05033", "logo": "git" },
-      { "name": "GitHub", "color": "121011", "logo": "github" }
+      {
+        "name": "Visual Studio",
+        "color": "5C2D91",
+        "logo": "visual-studio"
+      },
+      {
+        "name": "VS Code",
+        "color": "0078d7",
+        "logo": "visual-studio-code"
+      },
+      {
+        "name": "Git",
+        "color": "F05033",
+        "logo": "git"
+      },
+      {
+        "name": "GitHub",
+        "color": "121011",
+        "logo": "github"
+      }
     ]
   }
 }

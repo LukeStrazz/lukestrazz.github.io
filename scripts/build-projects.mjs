@@ -81,14 +81,19 @@ function renderGallery(project) {
 
   const figures = items
     .map(
-      (item) => `<figure>
-        <img src="/assets/projects/${esc(project.slug)}/${esc(item.src)}" alt="${esc(item.caption)}" loading="lazy" decoding="async" />
+      (item) => `<figure${item.wide ? ' class="wide"' : ''}>
+        <a href="/assets/projects/${esc(project.slug)}/${esc(item.src)}" target="_blank" rel="noreferrer">
+          <img src="/assets/projects/${esc(project.slug)}/${esc(item.src)}" alt="${esc(item.caption)}" loading="lazy" decoding="async" />
+        </a>
         <figcaption>${esc(item.caption)}</figcaption>
       </figure>`
     )
     .join('\n');
 
-  return `<div class="gallery">${figures}</div>${note}`;
+  // Nearest-neighbour scaling suits low-resolution pixel art (the OLED frames)
+  // but smears UI screenshots, so it is opt-in per project.
+  const cls = project.pixelated ? 'gallery gallery-pixel' : 'gallery';
+  return `<div class="${cls}">${figures}</div>${note}`;
 }
 
 function renderList(title, items) {
@@ -200,8 +205,11 @@ section{margin-top:44px}
 .gallery{margin-top:44px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
 .gallery figure{background:var(--glass);border:1px solid var(--line);border-radius:var(--radius);padding:14px;transition:border-color .25s,transform .25s}
 .gallery figure:hover{border-color:var(--line-strong);transform:translateY(-3px)}
-.gallery img{width:100%;border-radius:var(--radius-sm);image-rendering:pixelated;background:#060608}
+.gallery img{width:100%;border-radius:var(--radius-sm);background:#060608}
+.gallery-pixel img{image-rendering:pixelated}
 .gallery figcaption{margin-top:10px;font-size:13px;color:var(--muted);text-align:center}
+.gallery figure.wide{grid-column:1/-1}
+.gallery figure.wide img{max-height:none}
 .note{margin-top:18px;font-size:14px;color:var(--faint);border-left:2px solid var(--line-strong);padding-left:14px;max-width:70ch}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chips span{font-size:13px;color:var(--gold-300);background:rgba(212,162,61,.07);border:1px solid var(--line);border-radius:999px;padding:6px 13px}

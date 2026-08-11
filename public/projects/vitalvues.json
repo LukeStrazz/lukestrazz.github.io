@@ -22,6 +22,7 @@
     "Auth0",
     "Stripe",
     "SendGrid",
+    "Hangfire",
     "Razor",
     "JavaScript"
   ],
@@ -29,14 +30,63 @@
     "Structured the solution across three projects — web, services, and data — so persistence and integrations stayed separate from the MVC layer.",
     "Modelled bloodwork panels and user history in EF Core with code-first migrations applied on startup.",
     "Designed prompts that pass a user's own marker values to the OpenAI API, so explanations and plans are derived from their results rather than generic templates.",
-    "Integrated Auth0 for identity, Stripe for subscription billing, and SendGrid for transactional email.",
+    "Integrated Auth0 for identity, Stripe for subscription billing, SendGrid for transactional email, and Hangfire to schedule recurring jobs such as email sends.",
+    "Designed a relational model of roughly fifteen entities linking a person to their bloodwork, tests, goals, journals, meals, workouts, fasts, and chats, with join tables so journal entries can reference any of them.",
     "Added supporting health tooling around the core flow: fasting tracking, BMI tracking, journals, meal planning, and goal setting."
   ],
   "gallery": [
-    { "src": "logo.png", "caption": "VitalVues brand mark" }
+    {
+      "src": "dashboard.png",
+      "caption": "Daily dashboard — latest panel, streaks, and a prompt to export results as PDF"
+    },
+    {
+      "src": "bloodwork-comparison.png",
+      "caption": "Bloodwork comparison — markers charted across every panel the user has uploaded"
+    },
+    {
+      "src": "bmi-tracker.png",
+      "caption": "BMI tracker with history and trend over time"
+    },
+    {
+      "src": "meal-plan.png",
+      "caption": "AI-generated weekly meal plan with ingredients and prep times per day"
+    },
+    {
+      "src": "workout-schedule.png",
+      "caption": "Weekly workout schedule, built around the user's stated goal"
+    },
+    {
+      "src": "goals.png",
+      "caption": "Goal tracking with target weight, date range, and progress"
+    },
+    {
+      "src": "journals.png",
+      "caption": "Journals — a per-user log of workouts, goals, bloodwork, and chats, exportable to PDF"
+    },
+    {
+      "src": "fasting-timer.png",
+      "caption": "Fasting timer"
+    },
+    {
+      "src": "subscription.png",
+      "caption": "Stripe subscription checkout (test mode)"
+    },
+    {
+      "src": "context-diagram.png",
+      "caption": "System context diagram — VitalVues against Auth0, Stripe, SendGrid, Hangfire, MSSQL, and the AI service",
+      "wide": true
+    },
+    {
+      "src": "erd.png",
+      "caption": "Entity relationship diagram — the full data model behind bloodwork, goals, journals, meals, and workouts",
+      "wide": true
+    }
   ],
-  "galleryNote": "Screenshots of the running application are not included here: the app requires SQL Server plus private Auth0, Stripe, and SendGrid credentials that are not part of the public repository, so it cannot be stood up from a clean checkout alone.",
+  "galleryNote": "Screens and diagrams are taken from the project's final report. One profile screen from that report is deliberately not shown: it contained a teammate's photo, email, date of birth, and health details.",
   "links": [
-    { "label": "Repository", "href": "https://github.com/LukeStrazz/VitalVues" }
+    {
+      "label": "Repository",
+      "href": "https://github.com/LukeStrazz/VitalVues"
+    }
   ]
 }

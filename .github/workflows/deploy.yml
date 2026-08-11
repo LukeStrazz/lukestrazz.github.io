@@ -4,6 +4,11 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  schedule:
+    # Project pages bake in GitHub stars/forks at build time, so without a
+    # periodic rebuild those figures freeze at whenever main last changed.
+    # Weekly, Monday 09:00 UTC.
+    - cron: '0 9 * * 1'
 
 # Allow this workflow to publish to Pages
 permissions:
@@ -34,6 +39,11 @@ jobs:
 
       - name: Build
         run: npm run build
+        env:
+          # Authenticates the GitHub API calls in scripts/build-projects.mjs.
+          # Unauthenticated requests share a low per-IP limit on hosted
+          # runners, which would silently drop the stars/forks figures.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Configure Pages
         uses: actions/configure-pages@v5

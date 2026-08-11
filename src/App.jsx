@@ -12,19 +12,10 @@
  */
 
 import { Suspense, lazy, useEffect, useRef, useState } from 'react';
-import profileImage from '../assets/optimized/fullstrazz-hero.jpg';
-import buddy from '../assets/optimized/buddy-card.png';
-import vitalVues from '../assets/vital-vues-logo.png';
 import brandMark from '../assets/noBGlogo.png';
 
 // The 3D scene is code-split so the UI paints instantly.
 const Experience = lazy(() => import('./Experience'));
-
-const projectImages = {
-  saberin: profileImage,
-  vitalVues,
-  buddy
-};
 
 /** Fetches the shared resume.json data source once on mount. */
 function useResume() {
@@ -54,21 +45,38 @@ function useResume() {
  * Drops back to lighter effects on small screens, touch devices, and for
  * visitors who prefer reduced motion. Mirrored onto <html> as a class so
  * CSS can react too.
+ *
+ * `prefersReducedMotion` is reported separately because it means something
+ * stronger than "go lighter": those visitors skip the 3D scene entirely, so
+ * the three.js chunk is never fetched for them.
  */
+const EFFECT_QUERIES = ['(max-width: 960px)', '(pointer: coarse)', '(hover: none)'];
+const MOTION_QUERY = '(prefers-reduced-motion: reduce)';
+
+/** Reads the queries synchronously so the first render already knows. */
+function readEffectState() {
+  if (typeof window === 'undefined' || !window.matchMedia) {
+    return { reducedEffects: false, prefersReducedMotion: false };
+  }
+  const prefersReducedMotion = window.matchMedia(MOTION_QUERY).matches;
+  const reducedEffects =
+    prefersReducedMotion || EFFECT_QUERIES.some((q) => window.matchMedia(q).matches);
+  return { reducedEffects, prefersReducedMotion };
+}
+
 function useAdaptiveEffects() {
-  const [reducedEffects, setReducedEffects] = useState(false);
+  // Must be a lazy initialiser, not `false`: with a deferred value the first
+  // render mounts <Experience> and fires its dynamic import before the effect
+  // runs, so the three.js chunk downloads even for reduced-motion visitors.
+  const [state, setState] = useState(readEffectState);
 
   useEffect(() => {
-    const mediaQueries = [
-      window.matchMedia('(max-width: 960px)'),
-      window.matchMedia('(pointer: coarse)'),
-      window.matchMedia('(hover: none)'),
-      window.matchMedia('(prefers-reduced-motion: reduce)')
-    ];
+    const motionQuery = window.matchMedia(MOTION_QUERY);
+    const mediaQueries = [...EFFECT_QUERIES.map((q) => window.matchMedia(q)), motionQuery];
 
     const sync = () => {
       const matches = mediaQueries.some((query) => query.matches);
-      setReducedEffects(matches);
+      setState({ reducedEffects: matches, prefersReducedMotion: motionQuery.matches });
       document.documentElement.classList.toggle('reduced-effects', matches);
     };
 
@@ -81,7 +89,7 @@ function useAdaptiveEffects() {
     };
   }, []);
 
-  return reducedEffects;
+  return state;
 }
 
 /**
@@ -157,18 +165,24 @@ function SectionHeader({ eyebrow, title, body }) {
 /* ----------------------------------- app ---------------------------------- */
 
 export default function App() {
-  const reducedEffects = useAdaptiveEffects();
+  const { reducedEffects, prefersReducedMotion } = useAdaptiveEffects();
   const resume = useResume();
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
   return (
     <div className="site" id="top">
-      {/* Fixed 3D backdrop — everything else floats above it. */}
+      {/* Fixed 3D backdrop — everything else floats above it. Visitors who ask
+          for reduced motion get the static gradient instead, which also means
+          the three.js chunk is never requested for them. */}
       <div className="experience-layer" aria-hidden="true">
-        <Suspense fallback={<div className="experience-fallback" />}>
-          <Experience reducedEffects={reducedEffects} />
-        </Suspense>
+        {prefersReducedMotion ? (
+          <div className="experience-fallback" />
+        ) : (
+          <Suspense fallback={<div className="experience-fallback" />}>
+            <Experience reducedEffects={reducedEffects} />
+          </Suspense>
+        )}
       </div>
       {/* Radial vignette keeps text readable against the bright core. */}
       <div className="vignette" aria-hidden="true" />
@@ -324,37 +338,27 @@ export default function App() {
                   body="Enterprise delivery, AI product work, and enough curiosity to keep building outside the day job."
                 />
                 <div className="project-grid">
-                  {resume.projects.map((project, index) => {
-                    const image = projectImages[project.imageKey];
-                    const body = (
-                      <>
-                        {/* Private projects ship no artwork, so the image block is optional. */}
-                        {image ? (
-                          <div className="project-image">
-                            <img src={image} alt={project.title} loading="lazy" decoding="async" />
-                          </div>
-                        ) : null}
-                        <div className="project-copy">
-                          <p className="project-label">{project.label}</p>
-                          <h3>{project.title}</h3>
-                          <p>{project.text}</p>
-                          {project.page ? <span className="project-more">Read more →</span> : null}
-                        </div>
-                      </>
-                    );
-
-                    return (
-                      <Reveal
-                        as={project.page ? 'a' : 'article'}
-                        className={`project-card${project.page ? ' project-card-link' : ''}`}
-                        key={project.title}
-                        delay={index * 110}
-                        href={project.page}
-                      >
-                        {body}
-                      </Reveal>
-                    );
-                  })}
+                  {resume.projects.map((project, index) => (
+                    <Reveal
+                      as={project.page ? 'a' : 'article'}
+                      className={`project-card${project.page ? ' project-card-link' : ''}`}
+                      key={project.title}
+                      delay={index * 110}
+                      href={project.page}
+                    >
+                      {/* Covers are plain URLs under /assets, so adding or swapping
+                          one is a resume.json edit — no import or rebuild of code. */}
+                      <div className="project-image">
+                        <img src={project.image} alt={project.title} loading="lazy" decoding="async" />
+                      </div>
+                      <div className="project-copy">
+                        <p className="project-label">{project.label}</p>
+                        <h3>{project.title}</h3>
+                        <p>{project.text}</p>
+                        {project.page ? <span className="project-more">Read more →</span> : null}
+                      </div>
+                    </Reveal>
+                  ))}
                 </div>
               </Reveal>
             </section>

@@ -781,16 +781,30 @@ h3 {
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(212, 162, 61, 0.12);
 }
 
-/* Cards with a detail page become anchors; the rest stay plain articles. */
+/* Cards with a detail page become anchors; the rest stay plain articles.
+   Every card is a column so the copy block can stretch and pin its
+   "Read more" to the bottom — otherwise rows with differing text lengths
+   leave the link floating at a different height in each card. */
+.project-card,
 .project-card-link {
   display: flex;
   flex-direction: column;
+}
+
+.project-card-link {
   cursor: pointer;
+}
+
+.project-copy {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .project-more {
   display: inline-block;
-  margin-top: 14px;
+  margin-top: auto;
+  padding-top: 14px;
   font-family: var(--font-display);
   font-size: 0.82rem;
   color: var(--gold-300);
