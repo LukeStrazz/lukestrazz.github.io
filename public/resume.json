@@ -6,9 +6,8 @@
     "heroLastLine": "Strazzera",
     "title": "Software Engineer",
     "tagline": "AI · Cloud · Full-Stack Engineering",
-    "summary": "Software engineer building secure applications, modern interfaces, and production-ready systems — now bringing that full-stack and cloud delivery background to AI strategy and governance at the U.S. Department of the Treasury.",
+    "summary": "Software engineer building secure applications, modern interfaces, and production-ready systems — now bringing that full-stack and cloud delivery background to AI strategy and governance.",
     "role": "IT Specialist (AI)",
-    "company": "U.S. Department of the Treasury",
     "email": "lukestrazzera@gmail.com",
     "website": "https://luke-angelo.com",
     "github": "LukeStrazz",
@@ -18,10 +17,6 @@
     "updatedAt": "2026-08-11"
   },
   "quickFacts": [
-    {
-      "label": "Agency",
-      "value": "U.S. Department of the Treasury — Departmental Offices"
-    },
     {
       "label": "Focus",
       "value": "AI governance, secure systems, cloud delivery, full-stack"
@@ -121,16 +116,6 @@
     }
   ],
   "experience": [
-    {
-      "company": "U.S. Department of the Treasury — Departmental Offices",
-      "role": "IT Specialist (AI)",
-      "dates": "Aug 2026 — Present",
-      "points": [
-        "Formulating technical strategies, standards, and architectures that advance the secure and ethical deployment of AI across Treasury and, by extension, the federal government.",
-        "Ensuring Treasury's systems meet mission, cybersecurity, and performance requirements using Agile, DevSecOps, and Digital Engineering best practices.",
-        "Bringing a full-stack and cloud engineering background — Azure OpenAI delivery, cloud identity, and production systems — into federal AI strategy and governance work."
-      ]
-    },
     {
       "company": "Saberin Software",
       "role": "Developer Team Lead",
