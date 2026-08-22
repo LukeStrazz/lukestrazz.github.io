@@ -143,6 +143,25 @@ function renderPage(project, stats) {
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="/projects/project.css" />
+<script type="application/ld+json">
+${JSON.stringify(
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CreativeWork',
+    name: project.title,
+    headline: project.tagline,
+    description: project.summary,
+    url: `${SITE}/projects/${project.slug}/`,
+    image: `${SITE}${ogImage}`,
+    dateCreated: project.year,
+    keywords: (project.stack ?? []).join(', '),
+    author: { '@type': 'Person', name: 'Luke-Angelo Strazzera', url: SITE },
+    ...(project.repo ? { codeRepository: `https://github.com/${project.repo}` } : {})
+  },
+  null,
+  2
+)}
+</script>
 </head>
 <body>
 <header class="topbar">
