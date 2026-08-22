@@ -36,39 +36,39 @@
   ],
   "gallery": [
     {
-      "src": "dashboard.png",
+      "src": "dashboard.jpg",
       "caption": "Daily dashboard — latest panel, streaks, and a prompt to export results as PDF"
     },
     {
-      "src": "bloodwork-comparison.png",
+      "src": "bloodwork-comparison.jpg",
       "caption": "Bloodwork comparison — markers charted across every panel the user has uploaded"
     },
     {
-      "src": "bmi-tracker.png",
+      "src": "bmi-tracker.jpg",
       "caption": "BMI tracker with history and trend over time"
     },
     {
-      "src": "meal-plan.png",
+      "src": "meal-plan.jpg",
       "caption": "AI-generated weekly meal plan with ingredients and prep times per day"
     },
     {
-      "src": "workout-schedule.png",
+      "src": "workout-schedule.jpg",
       "caption": "Weekly workout schedule, built around the user's stated goal"
     },
     {
-      "src": "goals.png",
+      "src": "goals.jpg",
       "caption": "Goal tracking with target weight, date range, and progress"
     },
     {
-      "src": "journals.png",
+      "src": "journals.jpg",
       "caption": "Journals — a per-user log of workouts, goals, bloodwork, and chats, exportable to PDF"
     },
     {
-      "src": "fasting-timer.png",
+      "src": "fasting-timer.jpg",
       "caption": "Fasting timer"
     },
     {
-      "src": "subscription.png",
+      "src": "subscription.jpg",
       "caption": "Stripe subscription checkout (test mode)"
     },
     {
@@ -94,5 +94,5 @@
       "href": "https://github.com/LukeStrazz/VitalVues"
     }
   ],
-  "ogImage": "/assets/projects/vitalvues/bloodwork-comparison.png"
+  "ogImage": "/assets/projects/vitalvues/bloodwork-comparison.jpg"
 }
