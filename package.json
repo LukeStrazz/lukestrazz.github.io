@@ -5,7 +5,7 @@
   "description": "Luke-Angelo Strazzera personal portfolio",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node scripts/build-projects.mjs",
+    "build": "vite build && node scripts/build-projects.mjs && node scripts/build-resume.mjs",
     "preview": "vite preview"
   },
   "dependencies": {

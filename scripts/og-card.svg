@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="Luke-Angelo Strazzera — Software Engineer">
+  <!-- Source for the social preview image. Rendered to public/assets/og.png by
+       scripts/render-og.sh; kept static (no animation) since it is rasterised. -->
+  <defs>
+    <radialGradient id="voidGlow" cx="76%" cy="42%" r="72%">
+      <stop offset="0%" stop-color="#3a2a0d" />
+      <stop offset="38%" stop-color="#140f06" />
+      <stop offset="100%" stop-color="#030303" />
+    </radialGradient>
+    <radialGradient id="horizon" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#000000" />
+      <stop offset="62%" stop-color="#000000" />
+      <stop offset="78%" stop-color="#1a1105" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="ringGold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8a6420" stop-opacity="0" />
+      <stop offset="16%" stop-color="#c9942f" stop-opacity="0.85" />
+      <stop offset="42%" stop-color="#ffe9b0" />
+      <stop offset="66%" stop-color="#fff3cf" />
+      <stop offset="88%" stop-color="#a8781f" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#6d4d17" stop-opacity="0" />
+    </linearGradient>
+    <linearGradient id="titleGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffeebc" />
+      <stop offset="45%" stop-color="#f7d98c" />
+      <stop offset="78%" stop-color="#d4a23d" />
+      <stop offset="100%" stop-color="#8a6420" />
+    </linearGradient>
+    <filter id="wideGlow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="20" />
+    </filter>
+    <filter id="softGlow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="8" result="b" />
+      <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="#030303" />
+  <rect width="1200" height="630" fill="url(#voidGlow)" />
+
+  <g fill="#f7d98c" opacity="0.65">
+    <circle cx="90" cy="86" r="1.6" /><circle cx="232" cy="150" r="1.1" opacity="0.6" />
+    <circle cx="56" cy="300" r="1.3" opacity="0.5" /><circle cx="330" cy="72" r="1.1" opacity="0.5" />
+    <circle cx="150" cy="520" r="1.2" opacity="0.5" /><circle cx="470" cy="560" r="1" opacity="0.4" />
+    <circle cx="640" cy="70" r="1.2" opacity="0.45" /><circle cx="40" cy="430" r="1" opacity="0.4" />
+  </g>
+
+  <!-- Black hole, anchored right and bled off the edge for depth -->
+  <g transform="translate(980 300)">
+    <ellipse cx="0" cy="0" rx="260" ry="260" fill="url(#horizon)" filter="url(#wideGlow)" opacity="0.6" />
+    <g transform="rotate(-18)" fill="none">
+      <ellipse cx="0" cy="0" rx="290" ry="76" stroke="url(#ringGold)" stroke-width="1.2" opacity="0.32" />
+      <ellipse cx="0" cy="0" rx="244" ry="64" stroke="url(#ringGold)" stroke-width="3" opacity="0.9" />
+      <ellipse cx="0" cy="0" rx="198" ry="51" stroke="url(#ringGold)" stroke-width="1.6" opacity="0.5" />
+      <ellipse cx="0" cy="0" rx="134" ry="34" stroke="url(#ringGold)" stroke-width="3.4" opacity="1" />
+    </g>
+    <circle cx="0" cy="0" r="82" fill="#030303" filter="url(#softGlow)" />
+    <circle cx="0" cy="0" r="82" fill="#000000" />
+    <circle cx="0" cy="0" r="83" fill="none" stroke="#ffeebc" stroke-width="0.9" opacity="0.55" />
+    <g transform="rotate(-18)" fill="none">
+      <path d="M -134,0 A 134,34 0 0 0 134,0" stroke="url(#ringGold)" stroke-width="3.4" opacity="1" />
+      <path d="M -244,0 A 244,64 0 0 0 244,0" stroke="url(#ringGold)" stroke-width="3" opacity="0.9" />
+    </g>
+  </g>
+
+  <g transform="translate(84 236)">
+    <text x="0" y="0" font-family="'Segoe UI', Arial, sans-serif" font-weight="800" font-size="82"
+          letter-spacing="1" fill="url(#titleGold)">LUKE‑ANGELO</text>
+    <text x="0" y="94" font-family="'Segoe UI', Arial, sans-serif" font-weight="800" font-size="82"
+          letter-spacing="1" fill="url(#titleGold)">STRAZZERA</text>
+    <rect x="4" y="132" width="210" height="2.5" fill="#d4a23d" opacity="0.7" />
+    <text x="4" y="180" font-family="'Segoe UI', Arial, sans-serif" font-weight="500" font-size="23"
+          letter-spacing="3.4" fill="#b3aa9a">SOFTWARE ENGINEER · AI · CLOUD · FULL‑STACK</text>
+    <text x="4" y="232" font-family="'Segoe UI', Arial, sans-serif" font-weight="600" font-size="21"
+          letter-spacing="2" fill="#f7d98c">luke-angelo.com</text>
+  </g>
+</svg>

@@ -115,6 +115,10 @@ function renderPage(project, stats) {
 
   const chips = (project.stack ?? []).map((s) => `<span>${esc(s)}</span>`).join('');
 
+  // Social scrapers ignore SVG, so a project only supplies its own preview when
+  // that image is a raster; otherwise it falls back to the site-wide card.
+  const ogImage = /\.(png|jpe?g)$/i.test(project.ogImage ?? '') ? project.ogImage : '/assets/og.png';
+
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -123,6 +127,17 @@ function renderPage(project, stats) {
 <title>${esc(project.title)} — Luke-Angelo Strazzera</title>
 <meta name="description" content="${esc(project.tagline)}" />
 <link rel="canonical" href="${SITE}/projects/${esc(project.slug)}/" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Luke-Angelo Strazzera" />
+<meta property="og:url" content="${SITE}/projects/${esc(project.slug)}/" />
+<meta property="og:title" content="${esc(project.title)} — Luke-Angelo Strazzera" />
+<meta property="og:description" content="${esc(project.tagline)}" />
+<meta property="og:image" content="${SITE}${esc(ogImage)}" />
+<meta property="og:image:alt" content="${esc(project.title)}" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="${esc(project.title)} — Luke-Angelo Strazzera" />
+<meta name="twitter:description" content="${esc(project.tagline)}" />
+<meta name="twitter:image" content="${SITE}${esc(ogImage)}" />
 <link rel="icon" type="image/png" href="/assets/brand-mark.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -218,6 +233,7 @@ section{margin-top:44px}
 .button:hover{background:rgba(212,162,61,.12);transform:translateY(-2px)}
 .footer{border-top:1px solid var(--line);padding:26px 24px;text-align:center;color:var(--faint);font-size:14px}
 .footer a{color:var(--gold-300)}
+:where(a,button):focus-visible{outline:2px solid var(--gold-300);outline-offset:3px;border-radius:6px}
 @media (max-width:640px){main{padding:36px 18px 60px}.topbar{padding:14px 16px}.brand span{display:none}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 `;
@@ -251,6 +267,7 @@ async function main() {
   const today = new Date().toISOString().slice(0, 10);
   const urls = [
     { loc: `${SITE}/`, priority: '1.0' },
+    { loc: `${SITE}/resume/`, priority: '0.9' },
     ...slugs.sort().map((s) => ({ loc: `${SITE}/projects/${s}/`, priority: '0.8' }))
   ];
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>

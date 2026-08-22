@@ -12,7 +12,14 @@
     "Every expression is drawn procedurally from primitives — no sprite sheets or bitmap assets — so the whole firmware is a single readable file.",
     "Published with a full parts list, wiring guide, and a companion 3D-printable case so the build is genuinely reproducible."
   ],
-  "stack": ["C++", "Arduino Nano", "Adafruit GFX", "SSD1306 OLED", "I2C", "3D printing"],
+  "stack": [
+    "C++",
+    "Arduino Nano",
+    "Adafruit GFX",
+    "SSD1306 OLED",
+    "I2C",
+    "3D printing"
+  ],
   "methodology": [
     "Drove the display with the Adafruit SSD1306 and GFX libraries over I2C on an Arduino Nano.",
     "Composed each facial expression from GFX primitives (filled rectangles, circles, and triangles) and animated them by redrawing the framebuffer between timed delays.",
@@ -21,17 +28,45 @@
   ],
   "pixelated": true,
   "gallery": [
-    { "src": "regeyes.gif", "caption": "regEyes — the default idle loop, round eyes with a blink" },
-    { "src": "heart.gif", "caption": "heart — heart-shaped eyes above a rounded smile" },
-    { "src": "carroteyes.gif", "caption": "carrotEyes — angled chevron eyes with a smile" },
-    { "src": "sideeye.gif", "caption": "sideEye — blinking while the eyes shift wider apart" },
-    { "src": "sleep.gif", "caption": "sleep — closed eyes and a small mouth" },
-    { "src": "wakeup.gif", "caption": "wakeUp — the winking sequence played on power-on" }
+    {
+      "src": "regeyes.gif",
+      "caption": "regEyes — the default idle loop, round eyes with a blink"
+    },
+    {
+      "src": "heart.gif",
+      "caption": "heart — heart-shaped eyes above a rounded smile"
+    },
+    {
+      "src": "carroteyes.gif",
+      "caption": "carrotEyes — angled chevron eyes with a smile"
+    },
+    {
+      "src": "sideeye.gif",
+      "caption": "sideEye — blinking while the eyes shift wider apart"
+    },
+    {
+      "src": "sleep.gif",
+      "caption": "sleep — closed eyes and a small mouth"
+    },
+    {
+      "src": "wakeup.gif",
+      "caption": "wakeUp — the winking sequence played on power-on"
+    }
   ],
   "galleryNote": "These are not mockups: the firmware's own drawing calls were interpreted and rasterised at the device's real 128x64 resolution and frame timings, so each loop is exactly what the OLED displays.",
   "links": [
-    { "label": "Source (StrazzBuddy1.ino)", "href": "https://github.com/LukeStrazz/StrazzTunedBuddy/blob/main/StrazzBuddy1.ino" },
-    { "label": "3D-printable case", "href": "https://www.thingiverse.com/thing:5863359" },
-    { "label": "Inspired by Dasai Mochi", "href": "https://dasai.com.au/pages/meet-mochi" }
-  ]
+    {
+      "label": "Source (StrazzBuddy1.ino)",
+      "href": "https://github.com/LukeStrazz/StrazzTunedBuddy/blob/main/StrazzBuddy1.ino"
+    },
+    {
+      "label": "3D-printable case",
+      "href": "https://www.thingiverse.com/thing:5863359"
+    },
+    {
+      "label": "Inspired by Dasai Mochi",
+      "href": "https://dasai.com.au/pages/meet-mochi"
+    }
+  ],
+  "ogImage": "/assets/projects/cards/strazztunedbuddy.png"
 }

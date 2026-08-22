@@ -172,6 +172,11 @@ export default function App() {
 
   return (
     <div className="site" id="top">
+      {/* First tab stop: lets keyboard users bypass the fixed nav. */}
+      <a className="skip-link" href="#main">
+        Skip to content
+      </a>
+
       {/* Fixed 3D backdrop — everything else floats above it. Visitors who ask
           for reduced motion get the static gradient instead, which also means
           the three.js chunk is never requested for them. */}
@@ -214,7 +219,7 @@ export default function App() {
 
       {!resume ? null : (
         <>
-          <main className="page">
+          <main className="page" id="main">
             {/* ------------------------------ hero ------------------------------ */}
             <section className="hero">
               <Reveal className="hero-inner">
@@ -383,6 +388,9 @@ export default function App() {
                   </a>
                   <a className="button button-ghost" href={resume.meta.linkedin} target="_blank" rel="noreferrer">
                     LinkedIn
+                  </a>
+                  <a className="button button-ghost" href="/resume/">
+                    Résumé
                   </a>
                 </div>
                 <div className="chips working-style">

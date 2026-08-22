@@ -72,6 +72,11 @@
       "caption": "Stripe subscription checkout (test mode)"
     },
     {
+      "src": "original-wireframes.png",
+      "caption": "Original low-fidelity wireframes and screen flow — the starting point the finished UI above was built from",
+      "wide": true
+    },
+    {
       "src": "context-diagram.png",
       "caption": "System context diagram — VitalVues against Auth0, Stripe, SendGrid, Hangfire, MSSQL, and the AI service",
       "wide": true
@@ -88,5 +93,6 @@
       "label": "Repository",
       "href": "https://github.com/LukeStrazz/VitalVues"
     }
-  ]
+  ],
+  "ogImage": "/assets/projects/vitalvues/bloodwork-comparison.png"
 }

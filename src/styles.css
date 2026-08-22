@@ -22,7 +22,7 @@
 
   --text: #ece6d8;
   --muted: #a39c8e;
-  --faint: #6f6a60;
+  --faint: #8a8378;
 
   --line: rgba(212, 162, 61, 0.16);
   --line-strong: rgba(212, 162, 61, 0.38);
@@ -756,7 +756,7 @@ h3 {
   content: '—';
   position: absolute;
   left: 0;
-  color: var(--gold-700);
+  color: var(--gold-500);
 }
 
 /* -------------------------------- projects ------------------------------- */
@@ -904,7 +904,7 @@ h3 {
 }
 
 .footer-note {
-  color: var(--gold-700);
+  color: var(--gold-500);
 }
 
 /* ------------------------------- back to top ----------------------------- */
@@ -1015,4 +1015,42 @@ h3 {
     opacity: 1;
     animation: none;
   }
+}
+
+/* ------------------------------ focus states ----------------------------- */
+
+/* Keyboard users had no visible focus indicator at all — with project cards
+   now being links, that made the grid impossible to navigate by keyboard.
+   :focus-visible keeps the ring off mouse clicks. */
+:where(a, button, [tabindex]):focus-visible {
+  outline: 2px solid var(--gold-300);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.project-card-link:focus-visible {
+  outline-offset: 4px;
+  border-color: var(--line-strong);
+}
+
+/* Skip link: first tab stop, so keyboard and screen-reader users can jump
+   past the fixed nav straight to the content. */
+.skip-link {
+  position: absolute;
+  left: 50%;
+  top: 8px;
+  transform: translate(-50%, -160%);
+  z-index: 20;
+  padding: 10px 20px;
+  border-radius: 99px;
+  background: var(--gold-300);
+  color: var(--ink-950);
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  transition: transform 0.2s var(--ease-out);
+}
+
+.skip-link:focus {
+  transform: translate(-50%, 0);
 }
