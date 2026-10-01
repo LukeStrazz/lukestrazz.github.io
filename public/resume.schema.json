@@ -1,0 +1,140 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://luke-angelo.com/resume.schema.json",
+  "title": "Luke-Angelo Strazzera — resume data",
+  "description": "Career data shared by luke-angelo.com, the printable resume, the LaTeX PDF, and the GitHub profile README. Strict: unknown keys are errors, so a typo fails the build instead of silently dropping a section.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["meta", "quickFacts", "capabilities", "skillGroups", "experience", "projects", "education", "supportingSignals", "workingStyle", "techBadges"],
+  "properties": {
+    "$schema": { "type": "string", "format": "uri-reference" },
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "title", "role", "tagline", "summary", "email", "website", "github", "githubUrl", "linkedin", "viewCounterId"],
+      "properties": {
+        "name": { "$ref": "#/$defs/text" },
+        "title": { "$ref": "#/$defs/text", "description": "Professional headline: page titles, social previews, README banner alt text." },
+        "role": { "$ref": "#/$defs/text", "description": "Current job title: shown under the name on the resume and in the README." },
+        "company": { "$ref": "#/$defs/text", "description": "Optional. When set, the README reads \"<role> at <company>\"." },
+        "tagline": { "$ref": "#/$defs/text" },
+        "summary": { "$ref": "#/$defs/text", "type": "string", "maxLength": 300 },
+        "email": { "type": "string", "format": "email" },
+        "website": { "type": "string", "format": "uri", "pattern": "^https://[^/]+$" },
+        "github": { "$ref": "#/$defs/text" },
+        "githubUrl": { "type": "string", "format": "uri" },
+        "linkedin": { "type": "string", "format": "uri" },
+        "viewCounterId": { "$ref": "#/$defs/text", "description": "komarev.com profile-view counter key used by the README." },
+        "updatedAt": { "type": "string", "format": "date", "description": "Stamped by the build from git history. Do not set by hand." }
+      }
+    },
+    "quickFacts": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 4,
+      "items": { "$ref": "#/$defs/labelValue" }
+    },
+    "capabilities": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/titleText" }
+    },
+    "skillGroups": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["title", "items"],
+        "properties": {
+          "title": { "$ref": "#/$defs/text" },
+          "items": { "$ref": "#/$defs/uniqueTexts", "type": "array", "minItems": 1, "maxItems": 12, "description": "Capped so the list stays a signal rather than a keyword dump." }
+        }
+      }
+    },
+    "experience": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["company", "role", "dates", "points"],
+        "properties": {
+          "company": { "$ref": "#/$defs/text" },
+          "role": { "$ref": "#/$defs/text" },
+          "dates": { "$ref": "#/$defs/text" },
+          "points": { "$ref": "#/$defs/uniqueTexts", "type": "array", "minItems": 1, "maxItems": 5 }
+        }
+      }
+    },
+    "projects": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["title", "label", "text", "image"],
+        "properties": {
+          "title": { "$ref": "#/$defs/text" },
+          "label": { "$ref": "#/$defs/text" },
+          "text": { "$ref": "#/$defs/text" },
+          "repo": { "type": "string", "format": "uri" },
+          "page": { "type": "string", "pattern": "^/projects/[a-z0-9-]+/$", "description": "Must match a public/projects/<slug>.json." },
+          "image": { "type": "string", "pattern": "^/assets/.+\\.(png|jpg|jpeg|webp|svg)$", "description": "Site-relative; must exist under public/." }
+        }
+      }
+    },
+    "education": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["school", "degree", "dates", "details"],
+        "properties": {
+          "school": { "$ref": "#/$defs/text" },
+          "degree": { "$ref": "#/$defs/text" },
+          "dates": { "$ref": "#/$defs/text" },
+          "details": { "$ref": "#/$defs/uniqueTexts" }
+        }
+      }
+    },
+    "supportingSignals": { "$ref": "#/$defs/uniqueTexts" },
+    "workingStyle": { "$ref": "#/$defs/uniqueTexts" },
+    "techBadges": {
+      "type": "object",
+      "description": "README badge rows, keyed by category.",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["name", "color", "logo"],
+          "properties": {
+            "name": { "$ref": "#/$defs/text" },
+            "color": { "type": "string", "pattern": "^[0-9A-Fa-f]{6}$" },
+            "logo": { "$ref": "#/$defs/text" }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "text": { "type": "string", "minLength": 1, "pattern": "^\\S(.*\\S)?$" },
+    "uniqueTexts": { "type": "array", "uniqueItems": true, "items": { "$ref": "#/$defs/text" } },
+    "labelValue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "value"],
+      "properties": { "label": { "$ref": "#/$defs/text" }, "value": { "$ref": "#/$defs/text" } }
+    },
+    "titleText": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "text"],
+      "properties": { "title": { "$ref": "#/$defs/text" }, "text": { "$ref": "#/$defs/text" } }
+    }
+  }
+}

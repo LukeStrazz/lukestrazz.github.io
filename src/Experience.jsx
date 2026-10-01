@@ -139,6 +139,29 @@ const NEBULA_FRAGMENT = /* glsl */ `
 
   ${'${NOISE}'}
 
+  // One layer of stars on a hash grid; keep is the fraction of cells lit.
+  // Every per-star property reads its own hash. Speed and phase used to share
+  // one, and since only hashes above 0.996 became stars, every star got the
+  // same speed and phase and the whole sky blinked in unison.
+  vec3 starLayer(vec2 uv, vec2 grid, float keep, float radius, float gain, float seed) {
+    vec2 g = uv * grid;
+    vec2 cell = floor(g) + seed;
+    if (hash(cell) > keep) return vec3(0.0);
+
+    vec2 jitter = vec2(hash(cell + 3.1), hash(cell + 7.7)) - 0.5;
+    float d = length(fract(g) - 0.5 - jitter * 0.5);
+
+    float speed = 0.3 + 2.4 * hash(cell + 19.3);
+    float phase = 6.2831 * hash(cell + 41.9);
+    float twinkle = 0.5 + 0.5 * sin(uTime * speed + phase);
+    twinkle = mix(0.2, 1.0, twinkle * twinkle);
+
+    float magnitude = mix(0.45, 1.0, pow(hash(cell + 57.2), 3.0));
+    vec3 tint = mix(vec3(0.78, 0.86, 1.0), vec3(1.0, 0.88, 0.66), hash(cell + 83.5));
+
+    return tint * smoothstep(radius, 0.0, d) * twinkle * magnitude * gain;
+  }
+
   void main() {
     // Centered coords matching the 64x36 plane's aspect.
     vec2 p = (vUv - 0.5) * vec2(4.57, 2.57);
@@ -164,14 +187,12 @@ const NEBULA_FRAGMENT = /* glsl */ `
     color += vec3(0.38, 0.23, 0.07) * neb;                  // deep gold clouds
     color += vec3(1.0, 0.85, 0.55) * pow(neb, 2.6) * 0.55;  // hot filaments
 
-    // Sparse twinkling starfield on a hash grid.
-    vec2 cell = floor(vUv * vec2(300.0, 170.0));
-    float star = hash(cell);
-    if (star > 0.996) {
-      vec2 f = fract(vUv * vec2(300.0, 170.0)) - 0.5;
-      float twinkle = 0.55 + 0.45 * sin(uTime * (1.0 + star * 4.0) + star * 40.0);
-      color += vec3(1.0, 0.95, 0.8) * smoothstep(0.5, 0.05, length(f)) * twinkle * 0.85;
-    }
+    // Starfield: faint dust, a mid layer, and a few bright foreground stars.
+    #ifdef DENSE_STARS
+    color += starLayer(vUv, vec2(640.0, 360.0), 0.16, 0.3, 0.75, 0.0);
+    #endif
+    color += starLayer(vUv, vec2(320.0, 180.0), 0.07, 0.28, 0.95, 101.0);
+    color += starLayer(vUv, vec2(140.0, 79.0), 0.06, 0.16, 1.4, 211.0);
 
     gl_FragColor = vec4(color * uIntro, 1.0);
   }
@@ -184,6 +205,7 @@ function NebulaBackdrop({ intro, reducedEffects }) {
   const fragmentShader = useMemo(
     () =>
       `#define OCTAVES ${reducedEffects ? 3 : 5}\n` +
+      (reducedEffects ? '' : '#define DENSE_STARS\n') +
       NEBULA_FRAGMENT.replace('${NOISE}', NOISE_GLSL),
     [reducedEffects]
   );

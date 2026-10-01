@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 632" width="1200" height="632" role="img"
+     aria-label="Strazz Robinhood MCP architecture — an AI client calls MCP tools for research, modelling, and execution, with execution gated behind risk checks and defaulting to paper trading">
+  <defs>
+    <radialGradient id="bg2" cx="50%" cy="42%" r="72%">
+      <stop offset="0%" stop-color="#171008" />
+      <stop offset="60%" stop-color="#0a0906" />
+      <stop offset="100%" stop-color="#040404" />
+    </radialGradient>
+    <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#d4a23d" />
+    </marker>
+    <marker id="a2r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#c96a4a" />
+    </marker>
+  </defs>
+
+  <style>
+    .box  { fill: #0b0b0e; stroke: #8a6420; stroke-width: 1.4; }
+    .hot  { fill: #12100a; stroke: #d4a23d; stroke-width: 1.8; }
+    .risk { fill: #140b09; stroke: #c96a4a; stroke-width: 1.8; }
+    .lbl  { font-family: 'Segoe UI', Arial, sans-serif; font-size: 14.5px; font-weight: 600; fill: #ffeebc; }
+    .sm   { font-family: 'Segoe UI', Arial, sans-serif; font-size: 12.5px; font-weight: 600; fill: #ffeebc; }
+    .sub  { font-family: 'Segoe UI', Arial, sans-serif; font-size: 11px; fill: #a39c8e; }
+    .grp  { font-family: 'Segoe UI', Arial, sans-serif; font-size: 11px; letter-spacing: 2.6px; fill: #8a8378; }
+    .edge { stroke: #d4a23d; stroke-width: 1.4; fill: none; marker-end: url(#a2); opacity: .75; }
+    .edger{ stroke: #c96a4a; stroke-width: 1.6; fill: none; marker-end: url(#a2r); opacity: .9; }
+    .note { font-family: 'Segoe UI', Arial, sans-serif; font-size: 12px; fill: #8a8378; font-style: italic; }
+  </style>
+
+  <rect width="1200" height="632" fill="url(#bg2)" />
+
+  <!-- clients -->
+  <text x="52" y="46" class="grp">CLIENTS</text>
+  <rect class="box" x="52" y="66" width="196" height="58" rx="10" />
+  <text x="68" y="90" class="lbl">Any MCP client</text><text x="68" y="109" class="sub">Model Context Protocol</text>
+
+  <rect class="box" x="52" y="142" width="196" height="58" rx="10" />
+  <text x="68" y="166" class="lbl">React chat UI</text><text x="68" y="185" class="sub">react-markdown</text>
+
+  <rect class="box" x="52" y="218" width="196" height="58" rx="10" />
+  <text x="68" y="242" class="lbl">RobinhoodChat.Api</text><text x="68" y="261" class="sub">C# gateway · quant</text>
+
+  <!-- server core -->
+  <rect class="hot" x="330" y="66" width="240" height="72" rx="12" />
+  <text x="350" y="94" class="lbl">server.py · tools.py</text>
+  <text x="350" y="114" class="sub">FastMCP · typed tool surface</text>
+  <text x="350" y="130" class="sub">auth · credentials from env</text>
+
+  <path class="edge" d="M 248 95 H 326" />
+  <path class="edge" d="M 248 168 C 290 165 300 130 326 112" />
+  <path class="edge" d="M 248 244 C 296 238 302 150 326 124" />
+
+  <!-- read-only research -->
+  <text x="330" y="196" class="grp">READ-ONLY RESEARCH</text>
+  <g>
+    <rect class="box" x="330" y="212" width="118" height="50" rx="9" />
+    <text x="344" y="234" class="sm">research</text><text x="344" y="250" class="sub">discovery</text>
+    <rect class="box" x="460" y="212" width="110" height="50" rx="9" />
+    <text x="474" y="234" class="sm">signals</text><text x="474" y="250" class="sub">indicators</text>
+    <rect class="box" x="330" y="274" width="118" height="50" rx="9" />
+    <text x="344" y="296" class="sm">analysis</text><text x="344" y="312" class="sub">sentiment</text>
+    <rect class="box" x="460" y="274" width="110" height="50" rx="9" />
+    <text x="474" y="296" class="sm">backtest</text><text x="474" y="312" class="sub">factor model</text>
+    <rect class="box" x="330" y="336" width="240" height="50" rx="9" />
+    <text x="344" y="358" class="sm">predictions · pick tracker</text>
+    <text x="344" y="374" class="sub">forecast/ · sports/ submodules</text>
+  </g>
+  <path class="edge" d="M 450 138 V 212" />
+
+  <!-- execution path -->
+  <text x="650" y="196" class="grp">EXECUTION PATH</text>
+  <rect class="risk" x="650" y="212" width="240" height="66" rx="10" />
+  <text x="670" y="238" class="lbl" style="fill:#f0a98c">risk.py</text>
+  <text x="670" y="258" class="sub">position and exposure checks</text>
+  <text x="670" y="272" class="sub">every order passes through here</text>
+
+  <rect class="hot" x="650" y="308" width="240" height="60" rx="10" />
+  <text x="670" y="333" class="lbl">sandbox.py</text><text x="670" y="352" class="sub">paper trading — the default</text>
+
+  <rect class="box" x="650" y="398" width="240" height="60" rx="10" />
+  <text x="670" y="423" class="lbl">trading.py</text><text x="670" y="442" class="sub">live orders — opt-in only</text>
+
+  <path class="edger" d="M 570 100 C 620 110 630 170 766 208" />
+  <path class="edger" d="M 770 278 V 308" />
+  <path class="edger" d="M 770 368 V 398" />
+
+  <!-- brokerage -->
+  <rect class="box" x="650" y="492" width="240" height="58" rx="10" />
+  <text x="670" y="516" class="lbl">robin_stocks</text><text x="670" y="535" class="sub">Brokerage API</text>
+  <path class="edge" d="M 770 458 V 492" />
+
+  <!-- data sources -->
+  <text x="962" y="46" class="grp">DATA SOURCES</text>
+  <g>
+    <rect class="box" x="962" y="66" width="186" height="46" rx="9" />
+    <text x="976" y="94" class="sm">SEC EDGAR</text>
+    <rect class="box" x="962" y="124" width="186" height="46" rx="9" />
+    <text x="976" y="152" class="sm">FRED</text>
+    <rect class="box" x="962" y="182" width="186" height="46" rx="9" />
+    <text x="976" y="210" class="sm">Congress trades</text>
+    <rect class="box" x="962" y="240" width="186" height="46" rx="9" />
+    <text x="976" y="268" class="sm">Kalshi</text>
+  </g>
+  <path class="edge" d="M 570 232 C 800 150 860 100 958 89" />
+  <path class="edge" d="M 570 240 C 810 200 870 160 958 147" />
+  <path class="edge" d="M 570 290 C 800 270 870 220 958 205" />
+  <path class="edge" d="M 570 300 C 810 300 880 275 958 263" />
+
+  <!-- verification -->
+  <text x="962" y="332" class="grp">VERIFICATION</text>
+  <rect class="box" x="962" y="348" width="186" height="66" rx="10" />
+  <text x="976" y="374" class="lbl">pytest</text>
+  <text x="976" y="394" class="sub">56 test modules</text>
+  <text x="976" y="408" class="sub">ruff · coverage</text>
+
+  <text x="52" y="600" class="note">Read-only research and execution are separate tool groups: nothing can place an order without passing the risk checks, and the sandbox path is what runs unless live trading is explicitly enabled.</text>
+</svg>

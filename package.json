@@ -5,11 +5,10 @@
   "description": "Luke-Angelo Strazzera personal portfolio",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "node scripts/validate-resume.mjs && vite build && node scripts/build-projects.mjs && node scripts/build-resume.mjs && node scripts/build-latex.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
-    "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.5.0",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
@@ -17,6 +16,8 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.7.0",
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1",
     "vite": "^6.4.2"
   }
 }

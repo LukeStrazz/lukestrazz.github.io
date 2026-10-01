@@ -4,6 +4,11 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  schedule:
+    # Project pages bake in GitHub stars/forks at build time, so without a
+    # periodic rebuild those figures freeze at whenever main last changed.
+    # Weekly, Monday 09:00 UTC.
+    - cron: '0 9 * * 1'
 
 # Allow this workflow to publish to Pages
 permissions:
@@ -22,11 +27,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # Full history, so build-resume.mjs can stamp resume.json's updatedAt
+          # from the last commit that touched it.
+          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version-file: .node-version
           cache: npm
 
       - name: Install dependencies
@@ -34,6 +43,11 @@ jobs:
 
       - name: Build
         run: npm run build
+        env:
+          # Authenticates the GitHub API calls in scripts/build-projects.mjs.
+          # Unauthenticated requests share a low per-IP limit on hosted
+          # runners, which would silently drop the stars/forks figures.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
@@ -53,3 +67,21 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  # Regenerates the profile README from the build just published, so it follows
+  # a push within minutes instead of waiting for its daily schedule. Reads the
+  # GitHub Pages copy because that is the deploy this workflow just finished.
+  # Needs a fine-grained token with Actions: read & write on LukeStrazz/LukeStrazz
+  # stored as PROFILE_README_TOKEN; without it this job is a no-op.
+  sync-readme:
+    needs: deploy
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.PROFILE_README_TOKEN }}
+    steps:
+      - name: Dispatch profile README sync
+        if: env.GH_TOKEN != ''
+        run: >
+          gh workflow run update-readme.yml
+          -R LukeStrazz/LukeStrazz
+          -f source=https://lukestrazz.github.io/resume.json

@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page not found — Luke-Angelo Strazzera</title>
+    <meta name="robots" content="noindex" />
+    <link rel="icon" type="image/png" href="/assets/brand-mark.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <!--
+      Cloudflare Pages serves this file with a real 404 status for any path that
+      does not match an asset. Without it, Pages falls back to SPA behaviour and
+      returns index.html with HTTP 200, which search engines treat as a soft 404.
+      Styles are inlined because this page is copied verbatim from public/ and
+      cannot reference the hashed build CSS.
+    -->
+    <style>
+      :root {
+        --ink: #030303;
+        --text: #ece6d8;
+        --muted: #a39c8e;
+        --gold: #f7d98c;
+        --gold-deep: #d4a23d;
+        --line: rgba(212, 162, 61, 0.2);
+      }
+      *,
+      *::before,
+      *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 32px;
+        background: var(--ink);
+        background-image: radial-gradient(60% 55% at 50% 30%, rgba(212, 162, 61, 0.12), transparent 70%);
+        color: var(--text);
+        font-family: 'Inter', system-ui, sans-serif;
+        text-align: center;
+      }
+      .wrap { max-width: 540px; }
+      .ring { margin: 0 auto 28px; display: block; }
+      h1 {
+        font-family: 'Space Grotesk', system-ui, sans-serif;
+        font-size: clamp(56px, 12vw, 92px);
+        line-height: 1;
+        letter-spacing: -0.02em;
+        background: linear-gradient(120deg, #ffeebc, var(--gold) 45%, var(--gold-deep) 80%, #8a6420);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      h2 {
+        font-family: 'Space Grotesk', system-ui, sans-serif;
+        font-size: 19px;
+        font-weight: 600;
+        margin-top: 12px;
+      }
+      p { color: var(--muted); margin-top: 12px; font-size: 15px; line-height: 1.6; }
+      .actions { margin-top: 28px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+      a {
+        font-family: 'Space Grotesk', system-ui, sans-serif;
+        font-size: 14px;
+        text-decoration: none;
+        border: 1px solid var(--line);
+        border-radius: 99px;
+        padding: 11px 22px;
+        color: var(--gold);
+        transition: background 0.2s, transform 0.2s, border-color 0.2s;
+      }
+      a:hover { background: rgba(212, 162, 61, 0.12); border-color: var(--gold-deep); transform: translateY(-2px); }
+      a:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+      @media (prefers-reduced-motion: reduce) {
+        a { transition: none; }
+        .ring animateTransform { display: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <svg class="ring" width="120" height="120" viewBox="0 0 120 120" aria-hidden="true">
+        <defs>
+          <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#8a6420" stop-opacity="0" />
+            <stop offset="45%" stop-color="#d4a23d" />
+            <stop offset="100%" stop-color="#ffeebc" stop-opacity="0" />
+          </linearGradient>
+        </defs>
+        <circle cx="60" cy="60" r="26" fill="#000" />
+        <circle cx="60" cy="60" r="26.5" fill="none" stroke="#ffeebc" stroke-width="0.75" opacity="0.5" />
+        <g transform="rotate(-18 60 60)" fill="none" stroke="url(#g)">
+          <ellipse cx="60" cy="60" rx="52" ry="14" stroke-width="2" />
+          <ellipse cx="60" cy="60" rx="40" ry="10" stroke-width="1.2" opacity="0.6" />
+        </g>
+      </svg>
+
+      <h1>404</h1>
+      <h2>This page fell past the event horizon.</h2>
+      <p>The address doesn’t match anything here. It may have moved, or the link may be wrong.</p>
+
+      <div class="actions">
+        <a href="/">Home</a>
+        <a href="/#work">Selected work</a>
+        <a href="/resume/">Résumé</a>
+      </div>
+    </div>
+  </body>
+</html>

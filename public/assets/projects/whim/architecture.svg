@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 636" width="1200" height="636" role="img"
+     aria-label="WHIM architecture — clients depend on shared contracts; API, infrastructure, and application layers all depend inward on the domain">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="42%" r="72%">
+      <stop offset="0%" stop-color="#171008" />
+      <stop offset="60%" stop-color="#0a0906" />
+      <stop offset="100%" stop-color="#040404" />
+    </radialGradient>
+    <linearGradient id="core" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffeebc" />
+      <stop offset="100%" stop-color="#d4a23d" />
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#d4a23d" />
+    </marker>
+  </defs>
+
+  <style>
+    .box   { fill: #0b0b0e; stroke: #8a6420; stroke-width: 1.4; }
+    .box-i { fill: #12100a; stroke: #d4a23d; stroke-width: 1.8; }
+    .lbl   { font-family: 'Segoe UI', Arial, sans-serif; font-size: 15px; font-weight: 600; fill: #ffeebc; }
+    .sub   { font-family: 'Segoe UI', Arial, sans-serif; font-size: 11.5px; fill: #a39c8e; }
+    .grp   { font-family: 'Segoe UI', Arial, sans-serif; font-size: 11px; letter-spacing: 2.6px; fill: #8a8378; }
+    .edge  { stroke: #d4a23d; stroke-width: 1.4; fill: none; marker-end: url(#arrow); opacity: .75; }
+    .note  { font-family: 'Segoe UI', Arial, sans-serif; font-size: 12px; fill: #8a8378; font-style: italic; }
+  </style>
+
+  <rect width="1200" height="636" fill="url(#bg)" />
+
+  <text x="60" y="52" class="grp">CLIENTS</text>
+  <g>
+    <rect class="box" x="60" y="72" width="212" height="60" rx="10" />
+    <text x="76" y="97" class="lbl">App.Mobile</text><text x="76" y="116" class="sub">.NET MAUI Blazor</text>
+
+    <rect class="box" x="60" y="150" width="212" height="60" rx="10" />
+    <text x="76" y="175" class="lbl">App.Mobile.RN</text><text x="76" y="194" class="sub">React Native</text>
+
+    <rect class="box" x="60" y="228" width="212" height="60" rx="10" />
+    <text x="76" y="253" class="lbl">App.Admin</text><text x="76" y="272" class="sub">Admin surface</text>
+  </g>
+
+  <text x="60" y="368" class="grp">SUPPORTING SERVICES</text>
+  <g>
+    <rect class="box" x="60" y="388" width="212" height="60" rx="10" />
+    <text x="76" y="413" class="lbl">App.MediaProcessor</text><text x="76" y="432" class="sub">Media pipeline</text>
+
+    <rect class="box" x="60" y="466" width="212" height="60" rx="10" />
+    <text x="76" y="491" class="lbl">App.Components</text><text x="76" y="510" class="sub">Shared UI</text>
+  </g>
+
+  <text x="500" y="52" class="grp">DEPENDENCIES POINT INWARD</text>
+
+  <!-- API -->
+  <rect class="box" x="470" y="72" width="250" height="66" rx="10" />
+  <text x="490" y="99" class="lbl">App.Api</text><text x="490" y="119" class="sub">ASP.NET Core · JWT / OAuth · Serilog</text>
+
+  <!-- Infrastructure -->
+  <rect class="box" x="440" y="176" width="310" height="66" rx="10" />
+  <text x="460" y="203" class="lbl">App.Infrastructure</text><text x="460" y="223" class="sub">EF Core · storage · integrations</text>
+
+  <!-- Application -->
+  <rect class="box" x="470" y="280" width="250" height="66" rx="10" />
+  <text x="490" y="307" class="lbl">App.Application</text><text x="490" y="327" class="sub">Use cases · orchestration</text>
+
+  <!-- Contracts -->
+  <rect class="box" x="470" y="384" width="250" height="60" rx="10" />
+  <text x="490" y="409" class="lbl">App.Contracts</text><text x="490" y="428" class="sub">Shared DTOs</text>
+
+  <!-- Domain core -->
+  <rect class="box-i" x="470" y="486" width="250" height="76" rx="12" />
+  <text x="490" y="516" class="lbl" style="fill:url(#core)">App.Domain</text>
+  <text x="490" y="537" class="sub">Entities · business rules</text>
+  <text x="490" y="553" class="sub">no outward dependencies</text>
+
+  <!-- inward dependency edges -->
+  <path class="edge" d="M 560 138 V 176" />
+  <path class="edge" d="M 560 242 V 280" />
+  <path class="edge" d="M 560 346 V 384" />
+  <path class="edge" d="M 560 444 V 486" />
+  <path class="edge" d="M 690 138 C 800 150 800 460 726 512" />
+  <path class="edge" d="M 700 242 C 790 300 780 470 726 508" />
+
+  <!-- clients depend only on contracts -->
+  <path class="edge" d="M 272 102 C 360 110 380 380 466 404" />
+  <path class="edge" d="M 272 180 C 360 200 390 385 466 410" />
+  <path class="edge" d="M 272 258 C 360 290 390 390 466 416" />
+
+  <text x="808" y="52" class="grp">RUNTIME · DOCKER COMPOSE</text>
+  <g>
+    <rect class="box" x="808" y="72" width="230" height="60" rx="10" />
+    <text x="826" y="97" class="lbl">nginx</text><text x="826" y="116" class="sub">Reverse proxy</text>
+
+    <rect class="box" x="808" y="176" width="230" height="60" rx="10" />
+    <text x="826" y="201" class="lbl">api</text><text x="826" y="220" class="sub">Containerised App.Api</text>
+
+    <rect class="box" x="808" y="280" width="230" height="60" rx="10" />
+    <text x="826" y="305" class="lbl">postgres</text><text x="826" y="324" class="sub">Npgsql · EF Core migrations</text>
+
+    <rect class="box" x="808" y="384" width="230" height="60" rx="10" />
+    <text x="826" y="409" class="lbl">pgadmin</text><text x="826" y="428" class="sub">Local DB tooling</text>
+  </g>
+  <path class="edge" d="M 923 132 V 176" />
+  <path class="edge" d="M 923 236 V 280" />
+  <path class="edge" d="M 923 340 V 384" />
+
+  <text x="808" y="486" class="grp">ENVIRONMENTS</text>
+  <rect class="box" x="808" y="506" width="230" height="56" rx="10" />
+  <text x="826" y="531" class="lbl">local · staging · prod</text>
+  <text x="826" y="549" class="sub">separate compose overrides</text>
+
+  <text x="60" y="600" class="note">Layering is enforced at the project level: each arrow is an actual ProjectReference, so the core cannot depend on EF Core, HTTP, or any client.</text>
+</svg>

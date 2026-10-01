@@ -1,0 +1,51 @@
+{
+  "slug": "strazz-robinhood-mcp",
+  "title": "Strazz Robinhood MCP",
+  "tagline": "An MCP server for market research and risk-managed trading",
+  "visibility": "private",
+  "repo": null,
+  "year": "2026",
+  "role": "Sole author",
+  "summary": "A Model Context Protocol server that gives an AI assistant structured access to market research and portfolio state — quotes, fundamentals, filings, macro series, and signals — alongside an execution path that is explicitly risk-gated and defaults to paper trading. It grew past a single server into a small system: a Python tool surface, a C# gateway and quant service, and a React chat client.",
+  "highlights": [
+    "Built on MCP, so the same tool surface works with any MCP-capable client rather than being tied to one assistant.",
+    "Research and execution are separate tool groups: nothing reaches an order without passing risk checks, and paper trading is the default path rather than an option.",
+    "Pulls from primary sources — SEC EDGAR filings, FRED macro series, congressional trading disclosures, and Kalshi prediction markets — instead of a single vendor feed.",
+    "Backtesting, factor modelling, and a pick tracker make the strategies measurable rather than anecdotal.",
+    "Roughly 56 test modules alongside linting and coverage tooling, because the logic touches real money."
+  ],
+  "stack": [
+    "Python 3.11+",
+    "FastMCP",
+    "Model Context Protocol",
+    "robin_stocks",
+    "pandas-style analytics",
+    "SEC EDGAR",
+    "FRED",
+    "Kalshi",
+    "C#",
+    "ASP.NET Core",
+    "React",
+    "pytest",
+    "ruff"
+  ],
+  "methodology": [
+    "Exposed brokerage and research capabilities as discrete MCP tools with typed inputs, so an assistant composes them instead of scraping.",
+    "Separated read-only research tools from anything capable of placing an order, and routed every order through explicit risk and exposure checks.",
+    "Made a sandbox paper-trading path the default, so the system can be exercised end to end without risking capital.",
+    "Integrated primary data sources — EDGAR filings, FRED macro series, congressional disclosures, and Kalshi markets — behind a consistent tool interface.",
+    "Added backtesting, factor models, and prediction tracking so signal quality can be measured over time.",
+    "Split out a C# gateway and quant service plus a React chat client, keeping the MCP server itself focused on the tool surface.",
+    "Kept credentials strictly in environment configuration, never in the repository."
+  ],
+  "gallery": [
+    {
+      "src": "architecture.svg",
+      "caption": "Architecture — research tools are read-only; every order passes risk checks and runs against the paper-trading sandbox unless live trading is explicitly enabled",
+      "wide": true
+    }
+  ],
+  "galleryNote": "No interface screenshots are published: this is a private repository and its surfaces show real brokerage account data. The diagram describes structure only — no strategy parameters, thresholds, or credentials.",
+  "links": [],
+  "ogImage": "/assets/og.png"
+}
