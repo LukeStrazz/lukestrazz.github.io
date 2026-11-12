@@ -72,6 +72,13 @@ function render(resume) {
 <title>${esc(meta.name)} — Résumé</title>
 <meta name="description" content="Résumé of ${esc(meta.name)}, ${esc(meta.title)}." />
 <link rel="canonical" href="${SITE}/resume/" />
+<meta property="og:type" content="profile" />
+<meta property="og:site_name" content="${esc(meta.name)}" />
+<meta property="og:url" content="${SITE}/resume/" />
+<meta property="og:title" content="${esc(meta.name)} — Résumé" />
+<meta property="og:description" content="Résumé of ${esc(meta.name)}, ${esc(meta.title)}." />
+<meta property="og:image" content="${SITE}/assets/og.png" />
+<meta name="twitter:card" content="summary_large_image" />
 <link rel="icon" type="image/png" href="/assets/brand-mark.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -135,10 +142,14 @@ ul{list-style:none;display:grid;gap:5px}
   section{margin-top:14pt}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+.skip-link{position:absolute;left:50%;top:8px;transform:translate(-50%,-200%);z-index:20;padding:10px 20px;border-radius:99px;background:var(--gold);color:var(--ink);font-family:var(--display);font-size:14px;font-weight:600}
+.skip-link:focus{transform:translate(-50%,0)}
+@media print{.skip-link{display:none}}
 </style>
 </head>
 <body>
-<nav class="bar">
+<a class="skip-link" href="#main">Skip to content</a>
+<nav class="bar" aria-label="Résumé">
   <a href="/">← ${esc(meta.name)}</a>
   <div class="actions">
     <a class="btn" href="/resume/Luke-Angelo-Strazzera-Resume.pdf" download>Download PDF</a>
@@ -146,7 +157,7 @@ ul{list-style:none;display:grid;gap:5px}
   </div>
 </nav>
 
-<div class="sheet">
+<main class="sheet" id="main">
   <header class="top">
     <h1>${esc(meta.name)}</h1>
     <p class="role">${esc(meta.role ?? meta.title)}</p>
@@ -166,7 +177,7 @@ ul{list-style:none;display:grid;gap:5px}
   <section><h2>Additional</h2><ul class="signals">${resume.supportingSignals
     .map((s) => `<li>${esc(s)}</li>`)
     .join('')}</ul></section>
-</div>
+</main>
 </body>
 </html>
 `;

@@ -49,6 +49,11 @@ jobs:
           # runners, which would silently drop the stars/forks figures.
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      # luke-angelo.com (Cloudflare Pages) is the canonical site; this copy
+      # redirects there so search engines don't index the site twice.
+      - name: Turn pages into redirects to luke-angelo.com
+        run: node scripts/github-mirror.mjs
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
 

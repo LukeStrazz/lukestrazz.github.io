@@ -132,7 +132,7 @@ ${ed.details.map(tex).join(' \\textperiodcentered{} ')}\\par`
 \\usepackage{titlesec}
 \\usepackage[hidelinks]{hyperref}
 
-\\hypersetup{pdftitle={${tex(meta.name)} -- Resume}, pdfauthor={${tex(meta.name)}}}
+\\hypersetup{pdftitle={${tex(meta.name)} -- Resume}, pdfauthor={${tex(meta.name)}}, pdflang={en-US}, pdfdisplaydoctitle=true}
 \\pagestyle{empty}
 \\setlength{\\parindent}{0pt}
 \\linespread{${fit.spread}}

@@ -22,11 +22,14 @@
 
   --text: #ece6d8;
   --muted: #a39c8e;
-  --faint: #8a8378;
+  /* Lifted from #8a8378: 4.5:1 for small text even with bright disk behind the glass. */
+  --faint: #a8a194;
 
   --line: rgba(212, 162, 61, 0.16);
   --line-strong: rgba(212, 162, 61, 0.38);
-  --glass: rgba(8, 8, 11, 0.58);
+  /* 0.8, not 0.58: the scene behind the panels can be bright gold, and at the
+     lighter tint muted text fell to ~3:1 over it. */
+  --glass: rgba(8, 8, 11, 0.8);
 
   --font-display: 'Space Grotesk', system-ui, sans-serif;
   --font-body: 'Inter', system-ui, sans-serif;
@@ -242,6 +245,73 @@ a {
   transform: scaleX(1);
 }
 
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Pause/play for the animated backdrop (WCAG 2.2.2). Kept visible at every
+   width — unlike the nav, it is the only way to stop the motion. */
+.motion-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 16px;
+  border-radius: 99px;
+  border: 1px solid var(--line-strong);
+  background: rgba(3, 3, 3, 0.6);
+  color: var(--gold-300);
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: border-color 0.3s var(--ease-out), background 0.3s var(--ease-out);
+}
+
+.motion-toggle:hover {
+  border-color: var(--gold-400);
+  background: rgba(212, 162, 61, 0.12);
+}
+
+.motion-toggle-icon {
+  font-size: 10px;
+  letter-spacing: -0.1em;
+}
+
+/* Hidden visually, still read by screen readers. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Shown only if resume.json fails to load. */
+.page-message {
+  min-height: 100svh;
+  display: grid;
+  align-content: center;
+  padding: 140px 0 96px;
+}
+
+.page-message h1 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  margin-bottom: 16px;
+}
+
+.page-message a {
+  color: var(--gold-300);
+  text-decoration: underline;
+}
+
 /* -------------------------------- buttons -------------------------------- */
 
 .button {
@@ -269,7 +339,8 @@ a {
 }
 
 .button-primary {
-  background: linear-gradient(120deg, var(--gold-300), var(--gold-500) 55%, var(--gold-700));
+  /* Ends at gold-500, not gold-700: dark text on the deepest gold was 3.9:1. */
+  background: linear-gradient(120deg, var(--gold-300), var(--gold-400) 55%, var(--gold-500));
   color: var(--ink-950);
   box-shadow: 0 4px 24px rgba(212, 162, 61, 0.35);
 }
@@ -302,7 +373,8 @@ a {
 }
 
 .gradient-text {
-  background: linear-gradient(100deg, var(--gold-200) 0%, var(--gold-400) 45%, var(--gold-700) 100%);
+  /* Stops at gold-500: the old gold-700 tail dropped below 3:1 over the scene. */
+  background: linear-gradient(100deg, var(--gold-200) 0%, var(--gold-400) 45%, var(--gold-500) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -338,11 +410,24 @@ h3 {
 }
 
 .hero-inner {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 22px;
   max-width: 760px;
+}
+
+/* Soft dark scrim behind the hero copy. The accretion disk sits directly
+   behind this text, and without it the summary and the gold surname fell
+   well under WCAG contrast minimums wherever the disk was brightest. */
+.hero-inner::before {
+  content: '';
+  position: absolute;
+  inset: -12% -14%;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(closest-side, rgba(3, 3, 3, 0.82) 55%, rgba(3, 3, 3, 0.55) 80%, transparent);
 }
 
 .hero-eyebrow {
@@ -402,7 +487,7 @@ h3 {
 
 .hero-sub {
   max-width: 580px;
-  color: var(--muted);
+  color: var(--text);
   font-size: clamp(1rem, 1.4vw, 1.125rem);
   text-shadow: 0 2px 16px rgba(0, 0, 0, 0.9);
 }
@@ -951,6 +1036,23 @@ h3 {
     display: none;
   }
 
+  /* Icon-only on phones; the label stays in the accessibility tree. */
+  .motion-toggle {
+    width: 44px;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .motion-toggle-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
   .hero {
     padding-top: 120px;
   }
@@ -1014,6 +1116,30 @@ h3 {
   .scroll-cue {
     opacity: 1;
     animation: none;
+  }
+}
+
+/* Paused by the visitor: stop the remaining looping CSS motion as well. */
+.motion-paused .scroll-cue span {
+  animation: none;
+}
+
+/* Windows High Contrast / forced colours: background-clip text would render
+   invisible once the system strips the gradient, so fall back to plain text. */
+@media (forced-colors: active) {
+  .gradient-text {
+    background: none;
+    color: CanvasText;
+  }
+
+  a.gradient-text {
+    color: LinkText;
+  }
+
+  .experience-layer,
+  .vignette,
+  .intro-veil {
+    display: none;
   }
 }
 

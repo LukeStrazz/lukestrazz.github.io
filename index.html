@@ -78,6 +78,16 @@
   </head>
   <body>
     <div id="root"></div>
+    <!-- All page copy is rendered by script from resume.json; without script
+         the page would otherwise be blank. The résumé page is static HTML. -->
+    <noscript>
+      <main style="max-width: 640px; margin: 15vh auto; padding: 0 24px; font-family: system-ui, sans-serif; line-height: 1.6">
+        <h1>Luke-Angelo Strazzera</h1>
+        <p>Software engineer. This page needs JavaScript; the same content is on the
+          <a href="/resume/">résumé page</a>, or email
+          <a href="mailto:lukestrazzera@gmail.com">lukestrazzera@gmail.com</a>.</p>
+      </main>
+    </noscript>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
