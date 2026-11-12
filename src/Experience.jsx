@@ -709,13 +709,16 @@ function SceneRig({ scroll, children }) {
 
 /* ------------------------------- root canvas ------------------------------ */
 
-export default function Experience({ reducedEffects = false }) {
+export default function Experience({ reducedEffects = false, paused = false }) {
   const { pointer, scroll } = usePageMotion(reducedEffects);
   const intro = useRef(0);
   const start = reducedEffects ? INTRO_CAMERA_START_REDUCED : INTRO_CAMERA_START;
 
   return (
+    // 'never' stops the render loop and leaves the last frame on screen, so
+    // pausing freezes the scene rather than blanking it.
     <Canvas
+      frameloop={paused ? 'never' : 'always'}
       camera={{ position: [start.x, start.y, start.z], fov: 38 }}
       dpr={reducedEffects ? 1 : [1, 1.75]}
       shadows={false}

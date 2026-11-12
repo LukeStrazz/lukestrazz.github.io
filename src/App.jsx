@@ -17,26 +17,35 @@ import brandMark from '../assets/noBGlogo.png';
 // The 3D scene is code-split so the UI paints instantly.
 const Experience = lazy(() => import('./Experience'));
 
-/** Fetches the shared resume.json data source once on mount. */
+/**
+ * Fetches the shared resume.json data source once on mount. `failed` lets the
+ * page say so instead of sitting blank — every word of copy comes from here.
+ */
 function useResume() {
-  const [data, setData] = useState(null);
+  const [state, setState] = useState({ data: null, failed: false });
 
   useEffect(() => {
     let cancelled = false;
 
     fetch('/resume.json')
-      .then((res) => res.json())
-      .then((json) => {
-        if (!cancelled) setData(json);
+      .then((res) => {
+        if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
+        return res.json();
       })
-      .catch((err) => console.error('Failed to load resume.json', err));
+      .then((json) => {
+        if (!cancelled) setState({ data: json, failed: false });
+      })
+      .catch((err) => {
+        console.error('Failed to load resume.json', err);
+        if (!cancelled) setState({ data: null, failed: true });
+      });
 
     return () => {
       cancelled = true;
     };
   }, []);
 
-  return data;
+  return state;
 }
 
 /* --------------------------------- helpers -------------------------------- */
@@ -108,6 +117,36 @@ function useAdaptiveEffects() {
 }
 
 /**
+ * The backdrop animates indefinitely, so WCAG 2.2.2 (Pause, Stop, Hide) needs
+ * a way to stop it. The choice persists across visits; storage can throw in
+ * private windows, in which case it simply lasts for this page view.
+ */
+const PAUSE_KEY = 'motion-paused';
+
+function readStoredPause() {
+  try {
+    return window.localStorage.getItem(PAUSE_KEY) === '1';
+  } catch {
+    return false;
+  }
+}
+
+function useMotionPause() {
+  const [paused, setPaused] = useState(readStoredPause);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('motion-paused', paused);
+    try {
+      window.localStorage.setItem(PAUSE_KEY, paused ? '1' : '0');
+    } catch {
+      // Not persisted; the toggle still works for this page view.
+    }
+  }, [paused]);
+
+  return [paused, () => setPaused((value) => !value)];
+}
+
+/**
  * Reveal-on-scroll wrapper: starts hidden, fades and rises into place the
  * first time it enters the viewport. `delay` staggers siblings.
  */
@@ -167,6 +206,11 @@ function ScrollProgress() {
   return <div className="scroll-progress" ref={bar} aria-hidden="true" />;
 }
 
+/** Screen-reader note for links that open a new tab (WCAG G201). */
+function NewTabNote() {
+  return <span className="visually-hidden"> (opens in a new tab)</span>;
+}
+
 function SectionHeader({ eyebrow, title, body }) {
   return (
     <header className="section-header">
@@ -181,9 +225,18 @@ function SectionHeader({ eyebrow, title, body }) {
 
 export default function App() {
   const { reducedEffects, prefersReducedMotion } = useAdaptiveEffects();
-  const resume = useResume();
+  const { data: resume, failed } = useResume();
+  const [motionPaused, toggleMotion] = useMotionPause();
 
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+  // Paused on arrival: keep the static backdrop and skip three.js until the
+  // visitor un-pauses. Pausing later freezes the scene on its current frame.
+  const [sceneStarted, setSceneStarted] = useState(!motionPaused);
+  useEffect(() => {
+    if (!motionPaused) setSceneStarted(true);
+  }, [motionPaused]);
+
+  const scrollToTop = () =>
+    window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
 
   return (
     <div className="site" id="top">
@@ -196,11 +249,11 @@ export default function App() {
           for reduced motion get the static gradient instead, which also means
           the three.js chunk is never requested for them. */}
       <div className="experience-layer" aria-hidden="true">
-        {prefersReducedMotion ? (
+        {prefersReducedMotion || !sceneStarted ? (
           <div className="experience-fallback" />
         ) : (
           <Suspense fallback={<div className="experience-fallback" />}>
-            <Experience reducedEffects={reducedEffects} />
+            <Experience reducedEffects={reducedEffects} paused={motionPaused} />
           </Suspense>
         )}
       </div>
@@ -227,12 +280,44 @@ export default function App() {
           ))}
         </nav>
 
-        <a className="button button-ghost topbar-cta" href="mailto:lukestrazzera@gmail.com">
-          Get in touch
-        </a>
+        <div className="topbar-actions">
+          {/* Reduced-motion visitors never get the animated scene, so there is
+              nothing for them to pause. */}
+          {prefersReducedMotion ? null : (
+            <button
+              className="motion-toggle"
+              type="button"
+              aria-pressed={motionPaused}
+              onClick={toggleMotion}
+            >
+              <span className="motion-toggle-icon" aria-hidden="true">
+                {motionPaused ? '▶' : '❚❚'}
+              </span>
+              <span className="motion-toggle-label">
+                {motionPaused ? 'Play animation' : 'Pause animation'}
+              </span>
+            </button>
+          )}
+          <a className="button button-ghost topbar-cta" href="mailto:lukestrazzera@gmail.com">
+            Get in touch
+          </a>
+        </div>
       </header>
 
-      {!resume ? null : (
+      {failed ? (
+        <main className="page page-message" id="main">
+          <div className="panel">
+            <h1>Luke-Angelo Strazzera</h1>
+            <p className="section-body">
+              This page couldn’t load its content. The <a href="/resume/">résumé</a> has the same
+              information, or email <a href="mailto:lukestrazzera@gmail.com">lukestrazzera@gmail.com</a>.
+            </p>
+          </div>
+        </main>
+      ) : !resume ? (
+        // Present from the first paint so the skip link always has a target.
+        <main className="page" id="main" aria-busy="true" />
+      ) : (
         <>
           <main className="page" id="main">
             {/* ------------------------------ hero ------------------------------ */}
@@ -368,8 +453,10 @@ export default function App() {
                     >
                       {/* Covers are plain URLs under /assets, so adding or swapping
                           one is a resume.json edit — no import or rebuild of code. */}
+                      {/* Empty alt: the heading below already names the card, and
+                          repeating it made screen readers announce the title twice. */}
                       <div className="project-image">
-                        <img src={project.image} alt={project.title} loading="lazy" decoding="async" />
+                        <img src={project.image} alt="" loading="lazy" decoding="async" />
                       </div>
                       <div className="project-copy">
                         <p className="project-label">{project.label}</p>
@@ -400,9 +487,11 @@ export default function App() {
                   </a>
                   <a className="button button-ghost" href={resume.meta.githubUrl} target="_blank" rel="noreferrer">
                     GitHub
+                    <NewTabNote />
                   </a>
                   <a className="button button-ghost" href={resume.meta.linkedin} target="_blank" rel="noreferrer">
                     LinkedIn
+                    <NewTabNote />
                   </a>
                   <a className="button button-ghost" href="/resume/">
                     Résumé
