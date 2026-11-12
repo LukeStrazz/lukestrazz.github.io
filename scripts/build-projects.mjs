@@ -174,7 +174,7 @@ ${JSON.stringify(
     image: `${SITE}${ogImage}`,
     dateCreated: project.year,
     keywords: (project.stack ?? []).join(', '),
-    author: { '@type': 'Person', name: 'Luke-Angelo Strazzera', url: SITE },
+    author: { '@type': 'Person', '@id': `${SITE}/#person`, name: 'Luke-Angelo Strazzera', url: `${SITE}/` },
     ...(project.repo ? { codeRepository: `https://github.com/${project.repo}` } : {})
   },
   null,
