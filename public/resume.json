@@ -4,8 +4,8 @@
     "name": "Luke‑Angelo Strazzera",
     "title": "Software Engineer",
     "tagline": "AI · Cloud · Full-Stack Engineering",
-    "summary": "AI Engineer who designs and delivers secure, production-grade systems end to end, with a focus on solutions architecture. Went from intern to team lead in under two years. Passionate about guiding customers through complex technical decisions and turning requirements into scalable architectures.",
-    "role": "AI Engineer",
+    "summary": "SI (AI) Forward Deployed Engineer who designs and delivers secure, production-grade systems, with a focus on solutions architecture. Went from intern to team lead in under two years. Passionate about guiding customers through technical decisions and turning requirements into scalable architectures.",
+    "role": "SI (AI) Forward Deployed Engineer",
     "email": "lukestrazzera@gmail.com",
     "website": "https://luke-angelo.com",
     "github": "LukeStrazz",
@@ -20,7 +20,7 @@
     },
     {
       "label": "Trajectory",
-      "value": "Intern to team lead in under two years, now AI engineer"
+      "value": "Intern to team lead in under two years, now SI (AI) Forward Deployed Engineer"
     }
   ],
   "capabilities": [
@@ -117,7 +117,7 @@
   "experience": [
     {
       "company": "U.S. Department of the Treasury — TCSC",
-      "role": "AI Engineer",
+      "role": "SI (AI) Forward Deployed Engineer",
       "dates": "Aug 2026 — Present",
       "points": [
         "Build and ship full-stack features across multiple applications in Go, TypeScript, React, Vue, and SQL, from API and data-layer design through the interfaces people use.",
